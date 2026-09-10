@@ -21,7 +21,7 @@ export function useInView(margem = '-60px') {
     // Rede de seguranca: se o observer nao disparar (aba em background na
     // hidratacao, captura headless, navegador exotico), o conteudo aparece
     // mesmo assim. Conteudo invisivel e pior que animacao perdida.
-    const t = setTimeout(() => { setVisivel(true); obs.disconnect(); }, 2500);
+    const t = setTimeout(() => { setVisivel(true); obs.disconnect(); }, 1200);
     return () => { clearTimeout(t); obs.disconnect(); };
   }, [margem]);
   return [ref, visivel];

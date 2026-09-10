@@ -1,378 +1,171 @@
-import Prova from '@/components/Prova';
+import Link from 'next/link';
+import Topbar from '@/components/Topbar';
 import { Rise, Contador } from '@/components/Reveal';
-import { Sparkline, CoorteChart, SobrevivenciaChart, HazardChart, PreditorChart, CanalChart } from '@/components/Charts';
+import { CoorteChart, Mini } from '@/components/Charts';
+import { Zap, Clock, Users, Target, ArrowR, Calc, List, Trend, Check, Alert } from '@/components/Icons';
 import { findings, filaCompleta } from '@/lib/data';
 import { usd, usdK, num, pct, int } from '@/lib/fmt';
+
+const dataBR = (iso) => iso.split('-').reverse().join('/');
 
 export default function Page() {
   const f = findings();
   const contas = filaCompleta();
-  const c0 = f.coortes[0];
-  const cN = f.coortes[f.coortes.length - 1];
+  const c0 = f.coortes[0], cN = f.coortes[f.coortes.length - 1];
   const km = f.sobrevivencia;
   const meio = km.find((k) => k.sobrevivencia <= 50);
-  const testes = f.preditores.churn_evento.testes;
-  const nTestes = testes.length + f.preditores.churn_flag.testes.length;
-  const ult = (a) => a.slice(-14);
+  const nTestes = f.preditores.churn_evento.testes.length + f.preditores.churn_flag.testes.length;
   const criticas = contas.filter((c) => c.meses <= 3);
-  const arrCriticas = criticas.reduce((s, c) => s + c.arr_em_risco, 0);
-  const patamar = km.slice(5).reduce((s, k) => s + k.hazard, 0) / km.slice(5).length;
+  const arrCrit = criticas.reduce((s, c) => s + c.arr_em_risco, 0);
+  const ult = (a) => a.slice(-14);
+  const varia = (a, k) => { const p = a[0][k], u = a[a.length - 1][k]; return p ? ((u - p) / p) * 100 : 0; };
+  const sChurn = ult(f.afirmacoes_ceo.churn), sUso = ult(f.afirmacoes_ceo.uso), sCsat = ult(f.afirmacoes_ceo.csat);
+
+  const acoes = [
+    { n: 1, t: 'Instrumentar a janela de 90 dias e achar o que quebrou em 2024', prazo: 'Semana 1', imp: `${usdK(f.economia.arr_recuperavel)}/ano`, tom: 'gold', href: '/modelo', onde: 'Modelo de risco' },
+    { n: 2, t: 'Consertar a instrumentação de churn antes de decidir com ela', prazo: 'Semana 1–2', imp: `${int(f.integridade[0].n)} contas contraditórias`, tom: 'no', href: '/dados', onde: 'Dados quebrados' },
+    { n: 3, t: 'Cobrir as contas novas por exposição de receita, não por score', prazo: 'Contínuo', imp: `${usd(arrCrit)} expostos`, tom: 'soft', href: '/fila', onde: 'Fila do CS' },
+  ];
 
   return (
-    <div className="wrap">
+    <div className="page">
+      <Topbar titulo="Diagnóstico de churn" chips={[{ txt: `Dados até ${dataBR(f.asof)}` }, { txt: `${int(f.base.linhas_analisadas)} linhas · 5 tabelas` }]} />
 
-      {/* ─── A RESPOSTA — os 3 minutos do CEO ─────────────────── */}
-      <section id="resposta">
+      <div className="grid g-21">
         <Rise>
-          <div className="eyebrow">Diagnóstico · RavenStack · dados até {f.asof}</div>
-          <h1>
-            O churn não é um problema de retenção.<br />
-            É de <em className="g">onboarding</em> — e piora a cada safra.
-          </h1>
-          <p className="lead" style={{ maxWidth: 720 }}>
-            Metade das contas some antes do <strong>mês {meio?.mes}</strong>. E cada safra nova sai mais
-            rápido que a anterior <strong>na mesma idade de conta</strong>: quem entrou em {cN.coorte} perde{' '}
-            {pct(cN.m3.pct)} em 90 dias, contra {pct(c0.m3.pct)} de quem entrou em {c0.coorte}.
-            A empresa não está perdendo clientes antigos — está falhando em ativar os novos.
-          </p>
-        </Rise>
-
-        <div className="grid g4c" style={{ marginTop: 26 }}>
-          {[
-            { k: 'Prêmio anual', v: <Contador para={f.economia.arr_recuperavel} formato="usdK" />, cls: 'gold',
-              d: `de ARR recuperável ao voltar à retenção de 90 dias que a empresa já teve em ${c0.coorte}` },
-            { k: 'Deterioração', v: <><Contador para={cN.m3.pct / c0.m3.pct} formato="num" />×</>, cls: 'alert',
-              d: `mais churn em 90 dias hoje do que em ${c0.coorte}, na mesma idade (p<0,0001)` },
-            { k: 'Risco no 1º mês', v: <><Contador para={km[0].hazard} formato="num" />%</>, cls: '',
-              d: 'das contas saem já no primeiro mês — o pico de risco de toda a vida do cliente' },
-            { k: 'Preditores válidos', v: <>0<span style={{ fontSize: 19, color: 'var(--ink-3)' }}> / {nTestes}</span></>, cls: '',
-              d: 'nenhuma variável de uso, suporte ou contrato prevê quem vai sair' },
-          ].map((s, i) => (
-            <Rise key={s.k} atraso={i * 70}>
-              <div className="card stat" style={{ height: '100%' }}>
-                <div className="k">{s.k}</div>
-                <div className={`v ${s.cls}`}>{s.v}</div>
-                <div className="d">{s.d}</div>
-              </div>
-            </Rise>
-          ))}
-        </div>
-
-        <Rise atraso={120}>
-          <div className="card gold" style={{ marginTop: 12 }}>
-            <h3 style={{ color: 'var(--gold-ink)', marginBottom: 12 }}>O que fazer — em ordem de retorno</h3>
-            <ol style={{ margin: 0, paddingLeft: 20, fontSize: 14, lineHeight: 1.85, color: 'var(--ink)' }}>
-              <li><strong>Instrumentar a janela de 90 dias</strong> e achar o que quebrou em 2024 — vale {usdK(f.economia.arr_recuperavel)}/ano.</li>
-              <li><strong>Consertar a instrumentação de churn</strong> antes de decidir qualquer coisa com ela — {int(f.integridade[0].n)} contas têm dados contraditórios.</li>
-              <li><strong>Cobrir as contas novas por exposição de receita</strong>, não por score de risco — {int(criticas.length)} contas na janela crítica, {usd(arrCriticas)} expostos.</li>
-            </ol>
-            <p className="note" style={{ margin: '14px 0 0' }}>
-              Detalhe de cada frente na seção <a href="#acao" style={{ color: 'var(--gold-ink)', fontWeight: 700 }}>O que fazer</a>.
-              A lista de contas está na <a href="/fila" style={{ color: 'var(--gold-ink)', fontWeight: 700 }}>Fila do CS</a>.
-            </p>
+          <div className="card navy verdict">
+            <span className="k">Diagnóstico</span>
+            <h1>O churn não é retenção.<br />É <em>onboarding</em> — e piora a cada safra.</h1>
+            <p>Metade das contas some antes do mês {meio?.mes}. Quem entrou em {cN.coorte} perde {pct(cN.m3.pct)} em 90 dias, contra {pct(c0.m3.pct)} de quem entrou em {c0.coorte}. A empresa não perde clientes antigos — falha em ativar os novos.</p>
+            <div className="chips">
+              <span className="chip"><b>{num(cN.m3.pct / c0.m3.pct)}×</b> pior na mesma idade</span>
+              <span className="chip"><b>5 de 5</b> canais afetados</span>
+              <span className="chip"><b>0/{nTestes}</b> preditores individuais</span>
+              <span className="chip"><b>p &lt; 0,0001</b></span>
+            </div>
+            <div className="ft">
+              <span style={{ fontSize: 12, color: '#8ea2b3' }}>Uso e satisfação estáveis são verdade — e é por isso que ninguém viu.</span>
+              <Link href="/evidencias">Ver a prova <ArrowR size={15} /></Link>
+            </div>
           </div>
         </Rise>
-      </section>
-
-      {/* ─── POR QUE NINGUÉM VIU ──────────────────────────────── */}
-      <section id="paradoxo">
-        <Rise>
-          <div className="eyebrow">Por que ninguém viu</div>
-          <h2>Os três times estão certos ao mesmo tempo.</h2>
-          <blockquote className="quote">
-            “Os números mostram que o churn subiu, mas o time de CS diz que a satisfação está ok.
-            O time de produto diz que o uso da plataforma cresceu. Algo não bate.”
-            <span className="who">CEO da RavenStack</span>
-          </blockquote>
-          <p style={{ maxWidth: 720 }}>
-            Verifiquei as três afirmações separadamente, em vez de assumir que uma estava errada.
-            <strong> Todas se sustentam.</strong> O que não bate é a suposição de que elas deveriam se contradizer.
-          </p>
-        </Rise>
-        <div className="grid g3" style={{ marginTop: 18 }}>
-          <Rise><Sparkline dados={ult(f.afirmacoes_ceo.churn)} chave="n" titulo="Churns por mês" destaque /></Rise>
-          <Rise atraso={90}><Sparkline dados={ult(f.afirmacoes_ceo.uso)} chave="usos" titulo="Uso do produto" /></Rise>
-          <Rise atraso={180}><Sparkline dados={ult(f.afirmacoes_ceo.csat)} chave="csat" titulo="Satisfação (CSAT)" dominio={[1, 5]} casas={2} /></Rise>
-        </div>
-        <Rise>
-          <div className="card plain" style={{ marginTop: 12 }}>
-            <p style={{ margin: 0, maxWidth: 780 }}>
-              Uso e CSAT agregados são dominados pelas contas que <em className="g">sobreviveram</em> — as safras
-              antigas, que de fato usam o produto e estão satisfeitas. As contas novas somem rápido demais para
-              mover essas médias: entram, ficam poucas semanas e saem, quase sem rastro nos indicadores agregados.
-              O churn, ao contrário, conta todas as saídas. <strong>É a média escondendo a composição.</strong>
-            </p>
+        <Rise atraso={80}>
+          <div className="card gold kpi" style={{ height: '100%', justifyContent: 'space-between' }}>
+            <div>
+              <div className="lab"><span>Prêmio anual</span><span className="isq gold" style={{ width: 30, height: 30, borderRadius: 9 }}><Zap size={15} /></span></div>
+              <div className="big gold" style={{ fontSize: 40, marginTop: 10 }}><Contador para={f.economia.arr_recuperavel} formato="usdK" /></div>
+              <div className="sub" style={{ marginTop: 8 }}>de ARR recuperável ao voltar à retenção de 90 dias que a empresa já teve em {c0.coorte}.</div>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 16 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11.5, fontWeight: 700 }}><span style={{ color: 'var(--alert)' }}>Hoje · {pct(cN.m3.pct)}</span><span style={{ color: 'var(--ok)' }}>Meta · {pct(c0.m3.pct)}</span></div>
+              <div className="bar"><i className="no" style={{ width: `${cN.m3.pct}%` }} /></div>
+              <div className="bar"><i className="ok" style={{ width: `${c0.m3.pct}%` }} /></div>
+              <div className="hint">{num(f.economia.contas_salvas_mes)} contas salvas por mês · {usd(f.economia.mrr_medio_conta)} de MRR médio</div>
+            </div>
           </div>
         </Rise>
-      </section>
+      </div>
 
-      {/* ─── A CAUSA RAIZ ─────────────────────────────────────── */}
-      <section id="causa">
+      <div className="grid g-4">
+        {[
+          { Ic: Clock, tom: 'no', lab: 'Risco no 1º mês', v: <><Contador para={km[0].hazard} formato="num" />%</>, sub: 'o pico de toda a vida do cliente' },
+          { Ic: Trend, tom: 'no', lab: 'Churn em 90 dias hoje', v: <>{pct(cN.m3.pct)}</>, sub: `era ${pct(c0.m3.pct)} em ${c0.coorte}` },
+          { Ic: Users, tom: 'gold', lab: 'Na janela crítica', v: <><Contador para={criticas.length} formato="int" /><small>contas</small></>, sub: `${usd(arrCrit)} de ARR expostos` },
+          { Ic: Target, tom: 'ok', lab: 'Preditores válidos', v: <>0<small>/ {nTestes}</small></>, sub: 'nenhuma variável prevê quem sai' },
+        ].map((k, i) => (
+          <Rise key={k.lab} atraso={i * 60}>
+            <div className="card tight kpi">
+              <div className="lab"><span>{k.lab}</span><span className={`isq ${k.tom}`} style={{ width: 30, height: 30, borderRadius: 9 }}><k.Ic size={15} /></span></div>
+              <div className="big">{k.v}</div>
+              <div className="sub">{k.sub}</div>
+            </div>
+          </Rise>
+        ))}
+      </div>
+
+      <div className="grid g-32">
         <Rise>
-          <div className="eyebrow">A causa raiz</div>
-          <h2>Cada safra sai mais rápido que a anterior — na mesma idade de conta.</h2>
-          <p style={{ maxWidth: 720 }}>
-            Este é o gráfico que resolve o caso. Ele compara safras <strong>na mesma idade</strong>, não no mesmo
-            mês do calendário. Sem esse controle, a curva de churn subindo poderia ser apenas a base envelhecendo.
-            Com ele, sobra uma conclusão: a experiência de entrada piorou de forma contínua ao longo de 2024.
-          </p>
-        </Rise>
-        <Rise>
-          <div className="card" style={{ padding: '20px 18px 12px' }}>
-            <CoorteChart coortes={f.coortes} />
+          <div className="card">
+            <div className="card-h">
+              <div className="ttl"><span className="isq navy"><Trend /></span><div><h3>Churn na mesma idade, por safra</h3><span>Passe o mouse nas barras · troque o horizonte</span></div></div>
+              <span className="chip ok"><Check size={12} /> p &lt; 0,0001</span>
+            </div>
+            <CoorteChart coortes={f.coortes} compacto />
           </div>
         </Rise>
-
-        <div className="grid g3" style={{ marginTop: 12 }}>
-          {[
-            { k: 'Teste de permutação', v: 'p < 0,0001',
-              d: `χ²=${num(f.teste_coorte.chi2, 2)} em ${int(f.teste_coorte.n)} contas com 90 dias completos. Em 20.000 embaralhamentos, nenhum produziu diferença tão grande.` },
-            { k: 'Composição da base', v: 'estável',
-              d: 'O mix de canal, plano e porte quase não mudou entre as safras. Não é o caso de estar vendendo para outro tipo de cliente.' },
-            { k: 'Canais afetados', v: '5 de 5',
-              d: 'A piora aparece dentro de cada canal separadamente. Não é um canal ruim contaminando o total.' },
-          ].map((s, i) => (
-            <Rise key={s.k} atraso={i * 80}>
-              <div className="card stat" style={{ height: '100%' }}>
-                <div className="k">{s.k}</div>
-                <div className="v" style={{ fontSize: 26 }}>{s.v}</div>
-                <div className="d">{s.d}</div>
-              </div>
-            </Rise>
-          ))}
-        </div>
-
-        <Rise>
-          <div className="card" style={{ marginTop: 12, padding: '20px 18px 12px' }}>
-            <h3>A piora é transversal a todos os canais</h3>
-            <p className="note" style={{ marginBottom: 4 }}>
-              Se um canal ruim estivesse puxando o número, as outras linhas ficariam planas. Nenhuma fica.
-            </p>
-            <CanalChart dados={f.coorte_por_canal} coortes={f.coortes} />
-          </div>
-        </Rise>
-      </section>
-
-      {/* ─── A PROVA — sob demanda ────────────────────────────── */}
-      <section id="prova">
-        <Rise>
-          <div className="eyebrow">A prova</div>
-          <h2>Cinco blocos para quem quiser verificar.</h2>
-          <p style={{ maxWidth: 720 }}>
-            A afirmação de cada bloco está na linha visível. O teste que a sustenta abre ao clicar.
-            Se você é o CEO, pode pular — a decisão não muda. Se é quem vai defender o número numa reunião, abra tudo.
-          </p>
-        </Rise>
-
-        <Rise>
-          <Prova n="01" titulo="Quatro explicações plausíveis que os dados não sustentam"
-            resumo="Churn silencioso, viés de CSAT, canal ruim e segmento concentrador — todas rejeitadas por teste">
-            <p className="note" style={{ marginTop: 12 }}>
-              Três delas são o que uma análise apressada teria entregado como conclusão. A diferença entre um
-              diagnóstico e um chute é justamente o que foi descartado.
-            </p>
-            <div className="stack">
-              {f.rejeitadas.map((r, i) => (
-                <div key={i} className="card plain" style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 14, alignItems: 'start' }}>
-                  <div>
-                    <h3>{r.hipotese}</h3>
-                    <p className="note" style={{ margin: '0 0 6px' }}><span className="mono">{r.teste}</span></p>
-                    <p style={{ margin: 0, fontSize: 13 }}>{r.detalhe}</p>
-                  </div>
-                  <span className="tag no">{r.veredito}</span>
+        <Rise atraso={80}>
+          <div className="card" style={{ height: '100%' }}>
+            <div className="card-h">
+              <div className="ttl"><span className="isq blue"><Alert /></span><div><h3>Por que ninguém viu</h3><span>Os três times estão certos</span></div></div>
+            </div>
+            <div className="rows">
+              {[
+                { t: 'Churns por mês', s: `${sChurn[0].n} → ${sChurn[sChurn.length - 1].n}`, d: sChurn, k: 'n', cor: '#b3402f', tom: 'no' },
+                { t: 'Uso do produto', s: `${int(sUso[0].usos)} → ${int(sUso[sUso.length - 1].usos)}`, d: sUso, k: 'usos', cor: '#3d6f94', tom: 'soft' },
+                { t: 'Satisfação (CSAT)', s: `${num(sCsat[0].csat, 2)} → ${num(sCsat[sCsat.length - 1].csat, 2)}`, d: sCsat, k: 'csat', cor: '#3d6f94', tom: 'soft', dom: [1, 5] },
+              ].map((r) => (
+                <div key={r.t} className="row-i">
+                  <div className="tx"><b>{r.t}</b><span>{r.s}</span></div>
+                  <Mini dados={r.d} chave={r.k} cor={r.cor} dominio={r.dom} w={96} h={30} />
+                  <span className={`chip ${r.tom}`} style={{ minWidth: 58, justifyContent: 'center' }}>{varia(r.d, r.k) >= 0 ? '+' : ''}{num(varia(r.d, r.k), 0)}%</span>
                 </div>
               ))}
             </div>
-          </Prova>
-
-          <Prova n="02" titulo="Nenhuma variável prevê qual conta específica vai churnar"
-            resumo={`${nTestes} testes de permutação sobre 18 variáveis × 2 definições de churn — zero significativos`}>
-            <p style={{ marginTop: 12, maxWidth: 760 }}>
-              Volume de uso, erros, tempo de resposta, CSAT, escalações, downgrades, contrato: nada separa quem
-              fica de quem sai. Os maiores efeitos ficaram em |d| &lt; 0,17, que é ruído.
+            <p className="hint" style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid var(--line)' }}>
+              Uso e CSAT são médias dominadas por quem <b style={{ color: 'var(--ink)' }}>sobreviveu</b>. As contas novas somem antes de mover a média. O churn conta todas as saídas.
             </p>
-            <div className="card plain" style={{ padding: '18px 14px 10px' }}>
-              <PreditorChart testes={testes} />
-            </div>
-            <div className="card gold" style={{ marginTop: 12 }}>
-              <h3 style={{ color: 'var(--gold-ink)' }}>Este resultado negativo é o achado mais valioso</h3>
-              <p style={{ margin: 0, maxWidth: 780 }}>
-                É o que determina a estratégia. Se houvesse sinal individual, a resposta certa seria um modelo de
-                risco e um playbook de salvamento conta a conta. Como não há — e a deterioração por safra é enorme
-                e altamente significativa — a causa não é específica de cliente nenhum: é{' '}
-                <strong>sistêmica e mudou ao longo do tempo</strong>. Não se conserta isso ligando para contas em
-                risco; conserta-se consertando a entrada.
-              </p>
-              <p className="note" style={{ margin: '12px 0 0' }}>
-                Um modelo preditivo treinado nesses dados teria performance de moeda ao ar. Não construí um, e isso
-                foi decisão, não limitação de tempo.
-              </p>
-            </div>
-          </Prova>
-
-          <Prova n="03" titulo="O risco está concentrado nos primeiros 90 dias"
-            resumo={`Metade da base sai até o mês ${meio?.mes}; o risco cai de ${pct(km[0].hazard)} para ~${pct(patamar)} ao mês`}>
-            <p style={{ marginTop: 12, maxWidth: 760 }}>
-              Não é um vazamento constante: é uma queda brusca logo na entrada. Depois do quinto mês, quem ficou
-              tende a ficar. É por isso que o problema é de ativação, não de fidelidade.
-            </p>
-            <div className="card plain" style={{ padding: '18px 14px 10px', marginBottom: 12 }}>
-              <SobrevivenciaChart km={km} />
-            </div>
-            <div className="card plain" style={{ padding: '18px 14px 10px' }}>
-              <HazardChart km={km} />
-            </div>
-          </Prova>
-
-          <Prova n="04" titulo="A instrumentação de churn está quebrada"
-            resumo={`${int(f.integridade[0].n)} contas com dados contraditórios; o motivo de saída não tem relação com o feedback do cliente`}>
-            <p style={{ marginTop: 12, maxWidth: 760 }}>
-              Encontrei isso antes de qualquer insight, e é o motivo pelo qual o CEO ficou sem resposta até agora.
-              São problemas de captura de dado — nenhum se resolve com uma query melhor.
-            </p>
-            <div className="tablewrap">
-              <table>
-                <thead>
-                  <tr><th>Problema encontrado</th><th className="num">Registros</th><th>Consequência prática</th><th>Gravidade</th></tr>
-                </thead>
-                <tbody>
-                  {f.integridade.map((p, i) => (
-                    <tr key={i}>
-                      <td style={{ color: 'var(--ink)', fontWeight: 600 }}>{p.problema}</td>
-                      <td className="num" style={{ fontWeight: 800, color: 'var(--gold-ink)' }}>{int(p.n)}</td>
-                      <td style={{ fontSize: 12.5 }}>{p.impacto}</td>
-                      <td><span className={`tag ${p.severidade === 'critico' ? 'no' : p.severidade === 'alto' ? 'gold' : 'flat'}`}>{p.severidade}</span></td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="card alert" style={{ marginTop: 12 }}>
-              <h3 style={{ color: 'var(--alert)' }}>O detalhe mais grave</h3>
-              <p style={{ margin: 0, maxWidth: 780 }}>
-                O campo <span className="mono">reason_code</span> — a fonte de toda conversa interna sobre “por que
-                os clientes saem” — é <strong>estatisticamente independente</strong> do que o cliente escreveu no
-                feedback (χ²={num(f.teste_motivo.chi2, 2)}, {f.teste_motivo.df} graus de liberdade,
-                p={num(f.teste_motivo.p, 4)}, n={int(f.teste_motivo.n)}). Saber o código de motivo não diz nada
-                sobre a reclamação real. Toda priorização de roadmap feita a partir dele foi feita sobre ruído.
-              </p>
-            </div>
-          </Prova>
-
-          <Prova n="05" titulo="Como reproduzir cada número desta página"
-            resumo="Dois comandos, zero dependências na análise, resultados idênticos byte a byte">
-            <div className="grid g2" style={{ marginTop: 12 }}>
-              <div className="card plain">
-                <h3>Pipeline</h3>
-                <p style={{ fontSize: 13, margin: 0 }}>
-                  5 CSVs ({int(f.base.linhas_analisadas)} linhas) → <span className="mono">build-db.mjs</span> →
-                  SQLite → <span className="mono">findings.mjs</span> → <span className="mono">findings.json</span> →
-                  este app. A análise não tem dependência nenhuma: só <span className="mono">node:sqlite</span>,
-                  que é biblioteca padrão.
-                </p>
-              </div>
-              <div className="card plain">
-                <h3>Testes estatísticos</h3>
-                <p style={{ fontSize: 13, margin: 0 }}>
-                  Todos por permutação, 20.000 reamostragens, sem premissa de distribuição, com PRNG semeado —
-                  duas execuções dão saída idêntica. O módulo <span className="mono">stats.mjs</span> tem um
-                  self-check que falha se um rótulo aleatório for declarado significativo.
-                </p>
-              </div>
-              <div className="card plain">
-                <h3>Tratamento de censura</h3>
-                <p style={{ fontSize: 13, margin: 0 }}>
-                  Nas tabelas de safra, o denominador só inclui contas com o horizonte inteiro observado. Sem isso,
-                  a safra {cN.coorte} apareceria com churn acima de 100% — foi exatamente o erro que cometi na
-                  primeira versão, registrado no log de processo.
-                </p>
-              </div>
-              <div className="card plain">
-                <h3>Limitações</h3>
-                <p style={{ fontSize: 13, margin: 0 }}>
-                  Os dados não têm eventos de onboarding, então a causa exata da deterioração é inferida por
-                  eliminação, não observada. A janela encerra em {f.asof}, o que deixa o último mês parcialmente
-                  censurado.
-                </p>
-              </div>
-            </div>
-          </Prova>
+          </div>
         </Rise>
-      </section>
-
-      {/* ─── O QUE FAZER ──────────────────────────────────────── */}
-      <section id="acao">
-        <Rise>
-          <div className="eyebrow">O que fazer</div>
-          <h2>Três frentes, em ordem de retorno.</h2>
-        </Rise>
-        <div className="stack">
-          <Rise>
-            <Acao n="1" prazo="Semana 1" tom="gold" valor={`${usdK(f.economia.arr_recuperavel)} / ano`}
-              titulo="Instrumentar a janela de 90 dias e achar o que quebrou em 2024"
-              corpo={`A deterioração é contínua ao longo de 2024, transversal a todos os canais e concentrada na entrada. Isso aponta para uma mudança no produto, no fluxo de ativação ou na promessa de venda. Os dados atuais não registram eventos de onboarding, então a causa exata não é observável — e essa é a primeira lacuna a fechar. Instrumente time-to-first-value, conclusão de setup e primeiro marco de uso, e compare as safras de 2023 com as de 2024 em cada etapa.`}
-              metrica={`Meta: levar o churn de 90 dias de ${pct(cN.m3.pct)} para os ${pct(c0.m3.pct)} que a empresa já entregou em ${c0.coorte}. São ${num(f.economia.contas_salvas_mes)} contas por mês, a ${usd(f.economia.mrr_medio_conta)} de MRR médio.`} />
-          </Rise>
-          <Rise atraso={80}>
-            <Acao n="2" prazo="Semana 1-2" tom="alert" valor="Bloqueia decisões erradas"
-              titulo="Consertar a instrumentação antes de tomar qualquer decisão baseada nela"
-              corpo={`${int(f.integridade[0].n)} contas têm a flag de churn contradizendo os eventos registrados, e o campo de motivo de saída não tem relação estatística nenhuma com o que o cliente escreveu (p=${num(f.teste_motivo.p, 4)}). Na prática, a RavenStack não sabe quantos clientes perdeu nem por quê. Qualquer dashboard construído sobre esses campos está errado, e priorizações feitas a partir deles são aleatórias.`}
-              metrica="Meta: uma definição única de churn aplicada em todos os sistemas, e motivo de saída preenchido a partir do texto do cliente — não de uma lista suspensa." />
-          </Rise>
-          <Rise atraso={160}>
-            <Acao n="3" prazo="Contínuo" tom="flat" valor={`${usd(arrCriticas)} expostos hoje`}
-              titulo="Cobrir as contas novas por exposição de receita, não por score de risco"
-              corpo={`Como nenhuma variável prevê churn individual, não existe base para ranquear contas por probabilidade de saída. O que é defensável é ranquear por exposição: quanto de receita está numa fase de risco conhecido. Hoje há ${int(criticas.length)} contas ativas dentro da janela de 90 dias.`}
-              metrica={`Meta: cobertura de 100% das contas novas nos primeiros 90 dias. A concentração de receita torna isso barato — o decil superior da base responde por ${pct(f.base.concentracao_top10_pct)} do MRR.`}
-              link="/fila" linkTxt="Abrir a fila de contas →" />
-          </Rise>
-          <Rise atraso={220}>
-            <div className="card plain">
-              <h3>O que eu não recomendo, e por quê</h3>
-              <p style={{ margin: 0, maxWidth: 790, fontSize: 13.5 }}>
-                <strong>Modelo preditivo de churn:</strong> não há sinal para treinar. Entregaria um número com
-                aparência de precisão e conteúdo de acaso. <strong>Campanha por segmento:</strong> nenhuma dimensão
-                demográfica é significativa — mirar “DevTools” ou “clientes de evento” seria perseguir ruído
-                amostral. <strong>Programa de satisfação:</strong> o CSAT é estável, tem a mesma taxa de resposta
-                entre quem fica e quem sai, e não prevê churn. O problema não está aí.
-              </p>
-            </div>
-          </Rise>
-        </div>
-
-        <p className="note" style={{ marginTop: 30, paddingTop: 16, borderTop: '1px solid var(--line)' }}>
-          Fabrício Rojas · G4 AI Master Challenge · Challenge 001 · dados até {f.asof} ·
-          dataset RavenStack (River @ Rivalytics, licença MIT)
-        </p>
-      </section>
-    </div>
-  );
-}
-
-function Acao({ n, prazo, titulo, valor, corpo, metrica, tom, link, linkTxt }) {
-  const cor = tom === 'gold' ? 'var(--gold)' : tom === 'alert' ? 'var(--alert)' : 'var(--ink)';
-  return (
-    <div className="card">
-      <div className="row" style={{ justifyContent: 'space-between', marginBottom: 11 }}>
-        <div className="row" style={{ gap: 10 }}>
-          <span style={{
-            width: 25, height: 25, borderRadius: 8, display: 'grid', placeItems: 'center',
-            background: cor, color: '#fff', fontWeight: 800, fontSize: 12,
-          }}>{n}</span>
-          <span className="tag flat">{prazo}</span>
-        </div>
-        <span className="tag gold">{valor}</span>
       </div>
-      <h3 style={{ fontSize: 16 }}>{titulo}</h3>
-      <p style={{ fontSize: 13.5, marginBottom: 11 }}>{corpo}</p>
-      <p style={{ margin: 0, fontSize: 12.5, color: 'var(--ink-3)', borderLeft: '2px solid var(--line)', paddingLeft: 12 }}>
-        {metrica}
-      </p>
-      {link && (
-        <a href={link} style={{ display: 'inline-block', marginTop: 12, fontSize: 13, fontWeight: 700, color: 'var(--gold-ink)' }}>
-          {linkTxt}
-        </a>
-      )}
+
+      <Rise>
+        <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+          <div className="card-h" style={{ padding: '16px 18px 0', marginBottom: 12 }}>
+            <div className="ttl"><span className="isq gold"><Check /></span><div><h3>O que fazer</h3><span>Três frentes, em ordem de retorno</span></div></div>
+          </div>
+          <div className="tw" style={{ border: 0, borderRadius: 0 }}>
+            <table>
+              <thead><tr><th style={{ width: 44 }}>#</th><th>Ação</th><th>Prazo</th><th>Impacto</th><th>Ferramenta</th></tr></thead>
+              <tbody>
+                {acoes.map((a) => (
+                  <tr key={a.n}>
+                    <td><span className="isq" style={{ width: 28, height: 28, borderRadius: 8, fontWeight: 800, fontSize: 12, color: 'var(--ink)' }}>{a.n}</span></td>
+                    <td style={{ color: 'var(--ink)', fontWeight: 600 }}>{a.t}</td>
+                    <td><span className="chip soft"><Clock size={12} />{a.prazo}</span></td>
+                    <td><span className={`chip ${a.tom}`}>{a.imp}</span></td>
+                    <td><Link href={a.href} style={{ color: 'var(--gold-ink)', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 12.5 }}>{a.onde} <ArrowR size={13} /></Link></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div style={{ padding: '12px 18px', borderTop: '1px solid var(--line)', display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
+            <span className="hint" style={{ fontWeight: 700, color: 'var(--ink-2)' }}>Não recomendo:</span>
+            <span className="chip soft">modelo preditivo por comportamento</span>
+            <span className="chip soft">campanha por segmento</span>
+            <span className="chip soft">programa de satisfação</span>
+            <Link href="/evidencias" className="hint" style={{ marginLeft: 'auto', color: 'var(--gold-ink)', fontWeight: 700 }}>por quê →</Link>
+          </div>
+        </div>
+      </Rise>
+
+      <div className="grid g-2">
+        {[
+          { href: '/modelo', Ic: Calc, t: 'Modelo de risco', s: `Data de entrada prevê (AUC ${num(f.modelo.auc_data_entrada, 2)}); comportamento não (${num(f.modelo.melhor_comportamental.auc, 2)}). Simule uma conta.`, chip: 'Modelo preditivo' },
+          { href: '/fila', Ic: List, t: 'Fila do CS', s: `${int(contas.length)} contas ativas ordenadas por ARR exposto, com roteiro de abordagem. Exporta em CSV.`, chip: 'Usável amanhã' },
+        ].map((c, i) => (
+          <Rise key={c.href} atraso={i * 70}>
+            <Link href={c.href} className="card tight" style={{ display: 'flex', alignItems: 'center', gap: 14, transition: 'border-color .14s' }}>
+              <span className="isq navy" style={{ width: 42, height: 42, borderRadius: 13 }}><c.Ic size={19} /></span>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}><b style={{ fontSize: 14 }}>{c.t}</b><span className="chip gold" style={{ padding: '3px 8px', fontSize: 10.5 }}>{c.chip}</span></div>
+                <div className="hint" style={{ marginTop: 3 }}>{c.s}</div>
+              </div>
+              <ArrowR size={17} style={{ color: 'var(--ink-3)', flex: 'none' }} />
+            </Link>
+          </Rise>
+        ))}
+      </div>
     </div>
   );
 }

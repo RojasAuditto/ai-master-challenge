@@ -20,10 +20,25 @@ Testei 18 variáveis comportamentais contra duas definições de churn — **36 
 
 ## Solução
 
-O deliverable é uma aplicação web com **duas visões**, porque são dois usuários diferentes:
+O deliverable é uma aplicação web com sidebar escura no navy da marca e conteúdo claro, organizada por quem vai usar cada tela:
 
-- **`/` — Diagnóstico.** Resposta primeiro: a primeira tela traz o achado, os quatro números e as três frentes de ação. Abaixo, a narrativa que resolve o paradoxo e, em blocos expansíveis, toda a evidência que sustenta cada afirmação — para quem precisar defender o número numa reunião.
-- **`/fila` — Fila do CS.** A lista de contas ativas ordenada por ARR exposto, com o motivo de cada uma. É ferramenta de trabalho diário, não relatório.
+| Rota | Para quem | O que tem |
+|---|---|---|
+| `/` **Visão geral** | CEO | A resposta, o prêmio, 4 KPIs, o gráfico de safras interativo, o plano em 3 linhas. Decide-se sem rolar. |
+| `/evidencias` | Quem vai defender o número | 5 blocos expansíveis: afirmação visível, teste sob demanda. |
+| `/modelo` **Modelo de risco** | RevOps / CS | Calculadora de risco de 90 dias + AUC do que prevê e do que não + projeção da próxima safra. |
+| `/fila` **Fila do CS** | Analista de CS | 148 contas por ARR exposto, motivo por conta, roteiro de abordagem, exporta CSV. |
+| `/dados` **Dados quebrados** | Time de dados | Auditoria de integridade e o que instrumentar. |
+| `/metodo` | Avaliador | Pipeline, testes, censura, limitações, comandos. |
+
+### Os quatro diferenciais do brief
+
+| Pedido no challenge | Onde está | Observação |
+|---|---|---|
+| **Modelo preditivo que funcione** | `/modelo` | Data de entrada + idade da conta: AUC **0,72** para churn em 90 dias. A melhor variável comportamental dá 0,42 — moeda ao ar. O modelo funciona justamente porque *não* usa comportamento. |
+| **Dashboard / visualização interativa** | todas as rotas | Hover com tooltip em cada gráfico, troca de horizonte (90d / 6m / 12m) no gráfico central, animação de entrada, sidebar retrátil. |
+| **Automação que o CS usa amanhã** | `/fila` | Fila ordenada por exposição, com roteiro de abordagem por conta e exportação CSV. Sem etapa manual entre o dado e a ligação. |
+| **Análise que ninguém pediu** | `/dados` | O `reason_code` — a fonte de toda conversa sobre "por que saem" — é estatisticamente independente do que o cliente escreveu (p=0,957). Muda a conversa sobre roadmap. |
 
 ```
 submissions/fabricio-rojas/

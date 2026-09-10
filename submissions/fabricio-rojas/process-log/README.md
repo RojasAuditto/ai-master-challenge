@@ -134,7 +134,17 @@ Servir os três com o mesmo scroll linear atende mal os três. Reconstruí em **
 
 O que mantive foi a sequência paradoxo → resolução. Ela não é enfeite narrativo: é o que derruba a objeção "mas o produto disse que o uso subiu" antes de ela ser feita.
 
-### 10. Construção do app
+### 10. Segunda reconstrução: de relatório para produto
+
+A versão "resposta primeiro" resolveu a ordem, mas ainda parecia um relatório com cards — muito texto, layout uniforme, cara de coisa gerada. Duas mudanças:
+
+**Seguir o brief ao pé da letra nos diferenciais.** Eu havia justificado *não* construir modelo preditivo. A justificativa era correta, mas incompleta: existe um modelo que funciona — data de entrada + idade da conta — e ele é a forma mais honesta de mostrar que o comportamento não prevê. Medi por AUC no mesmo desfecho e na mesma amostra: 0,72 contra 0,42 da melhor variável comportamental. Virou a calculadora de `/modelo`, com a tendência entre safras projetada para a próxima (71% em 90 dias, se nada mudar). Os outros três diferenciais — interatividade, automação para o CS e a análise não pedida — ganharam rota própria.
+
+**Refazer o visual a partir das referências, não do template mental de dashboard.** Sidebar escura no navy da marca com o logo branco oficial, conteúdo claro, números grandes com rótulo pequeno, tokens em pill, ícones em quadrado arredondado, listas densas no padrão "transações". A prosa virou UI: onde havia um parágrafo, hoje há uma linha com pill e valor. O texto que sobrou é o que um executivo lê em uma passada.
+
+O que mantive: a ordem paradoxo → causa, o gráfico de safras como centro, e as três redes de segurança da animação.
+
+### 11. Construção do app
 
 Nove seções em ordem argumentativa, não em ordem de dashboard: paradoxo → resolução → o que descartei → por que não dá para prever → o que fazer → a fila → dados quebrados → método.
 

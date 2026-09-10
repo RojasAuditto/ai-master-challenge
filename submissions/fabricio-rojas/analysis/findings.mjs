@@ -182,6 +182,52 @@ const economia = {
   arr_recuperavel: Math.round(novasPorMes * delta * mrrMedioNovas * 12),
 };
 
+// ── 6b. Modelo preditivo: o que de fato prevê churn em 90 dias ─────────────
+// AUC = probabilidade de o modelo ranquear uma conta que churnou acima de uma
+// que ficou. 0,5 = moeda ao ar. Comparo "data de entrada" contra cada variavel
+// comportamental no MESMO desfecho e na MESMA amostra.
+function auc(score, y) {
+  const pos = [], neg = [];
+  for (let i = 0; i < y.length; i++) {
+    if (score[i] == null || Number.isNaN(score[i])) continue;
+    (y[i] ? pos : neg).push(score[i]);
+  }
+  if (!pos.length || !neg.length) return null;
+  let s = 0;
+  for (const a of pos) for (const b of neg) s += a > b ? 1 : a === b ? 0.5 : 0;
+  return s / (pos.length * neg.length);
+}
+const y3 = elegiveis3m.map((r) => (r.churn_evento && r.meses_ate_evento <= 3 ? 1 : 0));
+const dias = (dt) => (new Date(dt) - new Date('2023-01-01')) / 86400000;
+const aucEntrada = auc(elegiveis3m.map((r) => dias(r.signup_date)), y3);
+const aucComport = Object.entries(FEATS).map(([k, nome]) => {
+  const a = auc(elegiveis3m.map((r) => r[k]), y3);
+  // AUC abaixo de 0,5 = preve ao contrario; o poder discriminativo e |a-0.5|.
+  return a == null ? null : { variavel: nome, chave: k, auc: +a.toFixed(3), poder: +Math.abs(a - 0.5).toFixed(3) };
+}).filter(Boolean).sort((p, q) => q.poder - p.poder);
+
+// Tendencia entre safras (ajuste linear nos 4 pontos) e projecao da proxima.
+const pts = coorteTab.map((c, i) => [i, c.m3?.pct]).filter(([, v]) => v != null);
+const mx = pts.reduce((s, [x]) => s + x, 0) / pts.length, my = pts.reduce((s, [, v]) => s + v, 0) / pts.length;
+const slope = pts.reduce((s, [x, v]) => s + (x - mx) * (v - my), 0) / pts.reduce((s, [x]) => s + (x - mx) ** 2, 0);
+const intercept = my - slope * mx;
+const projecao = Math.min(95, +(intercept + slope * pts.length).toFixed(1));
+
+// Fator por safra: quanto a safra churna em 90 dias em relacao a base toda.
+const geral3m = 100 * y3.reduce((s, v) => s + v, 0) / y3.length;
+const fatorCoorte = Object.fromEntries(coorteTab.map((c) => [c.coorte, c.m3 ? +(c.m3.pct / geral3m).toFixed(3) : null]));
+fatorCoorte['proxima'] = +(projecao / geral3m).toFixed(3);
+
+const modelo = {
+  desfecho: 'churn em ate 90 dias', n: y3.length, taxa_base_pct: +geral3m.toFixed(1),
+  auc_data_entrada: +aucEntrada.toFixed(3),
+  auc_coorte: +auc(elegiveis3m.map((r) => COORTES.indexOf(r.coorte)), y3).toFixed(3),
+  comportamentais: aucComport, melhor_comportamental: aucComport[0],
+  tendencia: { pontos: pts.map(([i, v]) => ({ coorte: COORTES[i], pct: v })), pp_por_semestre: +slope.toFixed(1),
+    projecao_proxima_safra_pct: projecao, rotulo_proxima: '2025-H1' },
+  fator_coorte: fatorCoorte,
+};
+
 // ── 7. Fila de acao do CS ──────────────────────────────────────────────────
 // Sem preditor individual valido, o score usa SO o que e defensavel:
 // exposicao de receita x hazard empirico da fase do ciclo de vida.
@@ -216,7 +262,7 @@ const out = {
   },
   afirmacoes_ceo: { churn: serieChurn, uso: serieUso, csat: serieCsat },
   sobrevivencia: km, coortes: coorteTab, teste_coorte: testeCoorte, coorte_por_canal: coortePorCanal,
-  preditores, segmentos, integridade, rejeitadas, teste_motivo: testeMotivo, economia,
+  preditores, segmentos, integridade, rejeitadas, teste_motivo: testeMotivo, economia, modelo,
   fila: fila.slice(0, 60),
 };
 writeFileSync(join(here, '..', 'data', 'findings.json'), JSON.stringify(out, null, 2));
@@ -228,4 +274,6 @@ const nTot = Object.values(preditores).reduce((s, p) => s + p.testes.length, 0);
 log(`Preditores individuais significativos: ${nSig} de ${nTot}`);
 log(`reason_code x feedback: chi2=${testeMotivo.chi2} df=${testeMotivo.df} p=${testeMotivo.p}`);
 log(`ARR recuperavel: US$ ${economia.arr_recuperavel.toLocaleString('pt-BR')}`);
+log(`AUC 90d — data de entrada: ${modelo.auc_data_entrada} | melhor comportamental: ${modelo.melhor_comportamental.variavel} ${modelo.melhor_comportamental.auc}`);
+log(`Tendencia: ${modelo.tendencia.pp_por_semestre} pp/semestre -> proxima safra ~${modelo.tendencia.projecao_proxima_safra_pct}% em 90d`);
 log(`\nOK -> data/findings.json`);
