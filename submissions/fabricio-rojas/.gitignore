@@ -1,0 +1,7 @@
+node_modules/
+.next/
+*.log
+# Gerados por analysis/build-db.mjs a partir de data/raw — nao versionados.
+data/ravenstack.db
+data/ravenstack.db-shm
+data/ravenstack.db-wal

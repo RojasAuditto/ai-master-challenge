@@ -1,0 +1,2322 @@
+{
+  "gerado_em": "2026-09-10T23:13:43.190Z",
+  "asof": "2024-12-31",
+  "base": {
+    "contas": 500,
+    "ativas": 148,
+    "churnadas": 352,
+    "mrr_total": 1238390,
+    "mrr_ativo": 385905,
+    "concentracao_top10_pct": 46.6,
+    "linhas_analisadas": 33100
+  },
+  "afirmacoes_ceo": {
+    "churn": [
+      {
+        "mes": "2023-01",
+        "n": 1
+      },
+      {
+        "mes": "2023-03",
+        "n": 5
+      },
+      {
+        "mes": "2023-04",
+        "n": 3
+      },
+      {
+        "mes": "2023-05",
+        "n": 3
+      },
+      {
+        "mes": "2023-06",
+        "n": 5
+      },
+      {
+        "mes": "2023-07",
+        "n": 6
+      },
+      {
+        "mes": "2023-08",
+        "n": 7
+      },
+      {
+        "mes": "2023-09",
+        "n": 6
+      },
+      {
+        "mes": "2023-10",
+        "n": 10
+      },
+      {
+        "mes": "2023-11",
+        "n": 11
+      },
+      {
+        "mes": "2023-12",
+        "n": 16
+      },
+      {
+        "mes": "2024-01",
+        "n": 20
+      },
+      {
+        "mes": "2024-02",
+        "n": 10
+      },
+      {
+        "mes": "2024-03",
+        "n": 24
+      },
+      {
+        "mes": "2024-04",
+        "n": 25
+      },
+      {
+        "mes": "2024-05",
+        "n": 27
+      },
+      {
+        "mes": "2024-06",
+        "n": 40
+      },
+      {
+        "mes": "2024-07",
+        "n": 35
+      },
+      {
+        "mes": "2024-08",
+        "n": 42
+      },
+      {
+        "mes": "2024-09",
+        "n": 53
+      },
+      {
+        "mes": "2024-10",
+        "n": 66
+      },
+      {
+        "mes": "2024-11",
+        "n": 68
+      },
+      {
+        "mes": "2024-12",
+        "n": 117
+      }
+    ],
+    "uso": [
+      {
+        "mes": "2023-01",
+        "usos": 10877,
+        "subs": 969
+      },
+      {
+        "mes": "2023-02",
+        "usos": 9492,
+        "subs": 875
+      },
+      {
+        "mes": "2023-03",
+        "usos": 11031,
+        "subs": 989
+      },
+      {
+        "mes": "2023-04",
+        "usos": 10369,
+        "subs": 932
+      },
+      {
+        "mes": "2023-05",
+        "usos": 10757,
+        "subs": 978
+      },
+      {
+        "mes": "2023-06",
+        "usos": 10002,
+        "subs": 907
+      },
+      {
+        "mes": "2023-07",
+        "usos": 11083,
+        "subs": 960
+      },
+      {
+        "mes": "2023-08",
+        "usos": 10335,
+        "subs": 953
+      },
+      {
+        "mes": "2023-09",
+        "usos": 9737,
+        "subs": 878
+      },
+      {
+        "mes": "2023-10",
+        "usos": 10968,
+        "subs": 971
+      },
+      {
+        "mes": "2023-11",
+        "usos": 9475,
+        "subs": 868
+      },
+      {
+        "mes": "2023-12",
+        "usos": 10435,
+        "subs": 945
+      },
+      {
+        "mes": "2024-01",
+        "usos": 10621,
+        "subs": 949
+      },
+      {
+        "mes": "2024-02",
+        "usos": 10247,
+        "subs": 931
+      },
+      {
+        "mes": "2024-03",
+        "usos": 10725,
+        "subs": 963
+      },
+      {
+        "mes": "2024-04",
+        "usos": 10131,
+        "subs": 922
+      },
+      {
+        "mes": "2024-05",
+        "usos": 10552,
+        "subs": 938
+      },
+      {
+        "mes": "2024-06",
+        "usos": 10106,
+        "subs": 915
+      },
+      {
+        "mes": "2024-07",
+        "usos": 10601,
+        "subs": 959
+      },
+      {
+        "mes": "2024-08",
+        "usos": 10559,
+        "subs": 958
+      },
+      {
+        "mes": "2024-09",
+        "usos": 10195,
+        "subs": 918
+      },
+      {
+        "mes": "2024-10",
+        "usos": 11450,
+        "subs": 1027
+      },
+      {
+        "mes": "2024-11",
+        "usos": 10039,
+        "subs": 905
+      },
+      {
+        "mes": "2024-12",
+        "usos": 10738,
+        "subs": 973
+      }
+    ],
+    "csat": [
+      {
+        "mes": "2023-01",
+        "tickets": 83,
+        "csat": 4.02,
+        "taxa_resposta": 57.8
+      },
+      {
+        "mes": "2023-02",
+        "tickets": 59,
+        "csat": 4.03,
+        "taxa_resposta": 61
+      },
+      {
+        "mes": "2023-03",
+        "tickets": 86,
+        "csat": 3.96,
+        "taxa_resposta": 55.8
+      },
+      {
+        "mes": "2023-04",
+        "tickets": 91,
+        "csat": 3.81,
+        "taxa_resposta": 57.1
+      },
+      {
+        "mes": "2023-05",
+        "tickets": 78,
+        "csat": 4.03,
+        "taxa_resposta": 47.4
+      },
+      {
+        "mes": "2023-06",
+        "tickets": 82,
+        "csat": 4.18,
+        "taxa_resposta": 59.8
+      },
+      {
+        "mes": "2023-07",
+        "tickets": 83,
+        "csat": 3.91,
+        "taxa_resposta": 55.4
+      },
+      {
+        "mes": "2023-08",
+        "tickets": 96,
+        "csat": 3.93,
+        "taxa_resposta": 58.3
+      },
+      {
+        "mes": "2023-09",
+        "tickets": 93,
+        "csat": 4.07,
+        "taxa_resposta": 59.1
+      },
+      {
+        "mes": "2023-10",
+        "tickets": 75,
+        "csat": 3.78,
+        "taxa_resposta": 54.7
+      },
+      {
+        "mes": "2023-11",
+        "tickets": 74,
+        "csat": 4.22,
+        "taxa_resposta": 66.2
+      },
+      {
+        "mes": "2023-12",
+        "tickets": 91,
+        "csat": 3.93,
+        "taxa_resposta": 50.5
+      },
+      {
+        "mes": "2024-01",
+        "tickets": 84,
+        "csat": 3.89,
+        "taxa_resposta": 54.8
+      },
+      {
+        "mes": "2024-02",
+        "tickets": 75,
+        "csat": 4.02,
+        "taxa_resposta": 62.7
+      },
+      {
+        "mes": "2024-03",
+        "tickets": 92,
+        "csat": 3.73,
+        "taxa_resposta": 55.4
+      },
+      {
+        "mes": "2024-04",
+        "tickets": 81,
+        "csat": 3.81,
+        "taxa_resposta": 64.2
+      },
+      {
+        "mes": "2024-05",
+        "tickets": 81,
+        "csat": 4.15,
+        "taxa_resposta": 64.2
+      },
+      {
+        "mes": "2024-06",
+        "tickets": 78,
+        "csat": 4,
+        "taxa_resposta": 61.5
+      },
+      {
+        "mes": "2024-07",
+        "tickets": 70,
+        "csat": 4,
+        "taxa_resposta": 54.3
+      },
+      {
+        "mes": "2024-08",
+        "tickets": 82,
+        "csat": 3.96,
+        "taxa_resposta": 58.5
+      },
+      {
+        "mes": "2024-09",
+        "tickets": 96,
+        "csat": 4.36,
+        "taxa_resposta": 66.7
+      },
+      {
+        "mes": "2024-10",
+        "tickets": 88,
+        "csat": 4.02,
+        "taxa_resposta": 62.5
+      },
+      {
+        "mes": "2024-11",
+        "tickets": 84,
+        "csat": 3.82,
+        "taxa_resposta": 58.3
+      },
+      {
+        "mes": "2024-12",
+        "tickets": 98,
+        "csat": 3.84,
+        "taxa_resposta": 63.3
+      }
+    ]
+  },
+  "sobrevivencia": [
+    {
+      "mes": 1,
+      "em_risco": 500,
+      "churns": 91,
+      "hazard": 18.2,
+      "sobrevivencia": 81.8
+    },
+    {
+      "mes": 2,
+      "em_risco": 403,
+      "churns": 59,
+      "hazard": 14.6,
+      "sobrevivencia": 69.8
+    },
+    {
+      "mes": 3,
+      "em_risco": 336,
+      "churns": 38,
+      "hazard": 11.3,
+      "sobrevivencia": 61.9
+    },
+    {
+      "mes": 4,
+      "em_risco": 286,
+      "churns": 30,
+      "hazard": 10.5,
+      "sobrevivencia": 55.4
+    },
+    {
+      "mes": 5,
+      "em_risco": 252,
+      "churns": 24,
+      "hazard": 9.5,
+      "sobrevivencia": 50.2
+    },
+    {
+      "mes": 6,
+      "em_risco": 219,
+      "churns": 14,
+      "hazard": 6.4,
+      "sobrevivencia": 46.9
+    },
+    {
+      "mes": 7,
+      "em_risco": 195,
+      "churns": 17,
+      "hazard": 8.7,
+      "sobrevivencia": 42.9
+    },
+    {
+      "mes": 8,
+      "em_risco": 172,
+      "churns": 11,
+      "hazard": 6.4,
+      "sobrevivencia": 40.1
+    },
+    {
+      "mes": 9,
+      "em_risco": 154,
+      "churns": 10,
+      "hazard": 6.5,
+      "sobrevivencia": 37.5
+    },
+    {
+      "mes": 10,
+      "em_risco": 139,
+      "churns": 11,
+      "hazard": 7.9,
+      "sobrevivencia": 34.5
+    },
+    {
+      "mes": 11,
+      "em_risco": 121,
+      "churns": 10,
+      "hazard": 8.3,
+      "sobrevivencia": 31.7
+    },
+    {
+      "mes": 12,
+      "em_risco": 105,
+      "churns": 8,
+      "hazard": 7.6,
+      "sobrevivencia": 29.3
+    },
+    {
+      "mes": 13,
+      "em_risco": 93,
+      "churns": 3,
+      "hazard": 3.2,
+      "sobrevivencia": 28.3
+    },
+    {
+      "mes": 14,
+      "em_risco": 86,
+      "churns": 5,
+      "hazard": 5.8,
+      "sobrevivencia": 26.7
+    },
+    {
+      "mes": 15,
+      "em_risco": 75,
+      "churns": 5,
+      "hazard": 6.7,
+      "sobrevivencia": 24.9
+    },
+    {
+      "mes": 16,
+      "em_risco": 67,
+      "churns": 5,
+      "hazard": 7.5,
+      "sobrevivencia": 23
+    },
+    {
+      "mes": 17,
+      "em_risco": 58,
+      "churns": 4,
+      "hazard": 6.9,
+      "sobrevivencia": 21.5
+    },
+    {
+      "mes": 18,
+      "em_risco": 49,
+      "churns": 3,
+      "hazard": 6.1,
+      "sobrevivencia": 20.1
+    }
+  ],
+  "coortes": [
+    {
+      "coorte": "2023-H1",
+      "contas": 109,
+      "m3": {
+        "pct": 15.6,
+        "n": 109
+      },
+      "m6": {
+        "pct": 26.6,
+        "n": 109
+      },
+      "m12": {
+        "pct": 46.8,
+        "n": 109
+      },
+      "mrr": 280121
+    },
+    {
+      "coorte": "2023-H2",
+      "contas": 118,
+      "m3": {
+        "pct": 22.9,
+        "n": 118
+      },
+      "m6": {
+        "pct": 41.5,
+        "n": 118
+      },
+      "m12": {
+        "pct": 70.3,
+        "n": 118
+      },
+      "mrr": 298601
+    },
+    {
+      "coorte": "2024-H1",
+      "contas": 121,
+      "m3": {
+        "pct": 38.8,
+        "n": 121
+      },
+      "m6": {
+        "pct": 62,
+        "n": 121
+      },
+      "m12": null,
+      "mrr": 311155
+    },
+    {
+      "coorte": "2024-H2",
+      "contas": 152,
+      "m3": {
+        "pct": 59.7,
+        "n": 72
+      },
+      "m6": null,
+      "m12": null,
+      "mrr": 348513
+    }
+  ],
+  "teste_coorte": {
+    "chi2": 46.09,
+    "p": 0.00005,
+    "groups": 4,
+    "n": 420
+  },
+  "coorte_por_canal": [
+    {
+      "canal": "partner",
+      "2023-H1": 20,
+      "2023-H2": 24,
+      "2024-H1": 38,
+      "2024-H2": 60
+    },
+    {
+      "canal": "other",
+      "2023-H1": 25,
+      "2023-H2": 26,
+      "2024-H1": 42,
+      "2024-H2": 47
+    },
+    {
+      "canal": "organic",
+      "2023-H1": 5,
+      "2023-H2": 13,
+      "2024-H1": 48,
+      "2024-H2": 78
+    },
+    {
+      "canal": "event",
+      "2023-H1": 18,
+      "2023-H2": 23,
+      "2024-H1": 32,
+      "2024-H2": 54
+    },
+    {
+      "canal": "ads",
+      "2023-H1": 8,
+      "2023-H2": 29,
+      "2024-H1": 33,
+      "2024-H2": 55
+    }
+  ],
+  "preditores": {
+    "churn_flag": {
+      "rotulo": "flag da conta",
+      "n_churn": 110,
+      "n_ficou": 390,
+      "testes": [
+        {
+          "variavel": "Tempo até 1ª resposta",
+          "chave": "primeira_resp",
+          "churn": 84.93,
+          "stayed": 89.58,
+          "d": -0.167,
+          "p": 0.127,
+          "nA": 108,
+          "nB": 384,
+          "significativo": false
+        },
+        {
+          "variavel": "Features distintas",
+          "chave": "features",
+          "churn": 28.34,
+          "stayed": 27.41,
+          "d": 0.169,
+          "p": 0.1278,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        },
+        {
+          "variavel": "Tickets high/urgent",
+          "chave": "tickets_graves",
+          "churn": 1.87,
+          "stayed": 2.1,
+          "d": -0.156,
+          "p": 0.1372,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        },
+        {
+          "variavel": "Volume de uso",
+          "chave": "usos",
+          "churn": 522.04,
+          "stayed": 495.13,
+          "d": 0.154,
+          "p": 0.1553,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        },
+        {
+          "variavel": "Assinaturas",
+          "chave": "n_subs",
+          "churn": 10.29,
+          "stayed": 9.92,
+          "d": 0.116,
+          "p": 0.3007,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        },
+        {
+          "variavel": "Escalações",
+          "chave": "escalacoes",
+          "churn": 0.22,
+          "stayed": 0.18,
+          "d": 0.085,
+          "p": 0.438,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        },
+        {
+          "variavel": "CSAT",
+          "chave": "csat",
+          "churn": 4,
+          "stayed": 3.95,
+          "d": 0.087,
+          "p": 0.443,
+          "nA": 102,
+          "nB": 364,
+          "significativo": false
+        },
+        {
+          "variavel": "Assentos",
+          "chave": "seats",
+          "churn": 19.24,
+          "stayed": 20.93,
+          "d": -0.084,
+          "p": 0.4516,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        },
+        {
+          "variavel": "Tempo de resolução",
+          "chave": "tempo_res",
+          "churn": 35.49,
+          "stayed": 36.45,
+          "d": -0.082,
+          "p": 0.4531,
+          "nA": 108,
+          "nB": 384,
+          "significativo": false
+        },
+        {
+          "variavel": "MRR",
+          "chave": "mrr",
+          "churn": 2322.2,
+          "stayed": 2520.38,
+          "d": -0.055,
+          "p": 0.6384,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        },
+        {
+          "variavel": "Tickets abertos",
+          "chave": "n_tickets",
+          "churn": 3.93,
+          "stayed": 4.02,
+          "d": -0.047,
+          "p": 0.6426,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        },
+        {
+          "variavel": "Contrato anual",
+          "chave": "pct_anual",
+          "churn": 0.49,
+          "stayed": 0.49,
+          "d": -0.025,
+          "p": 0.8181,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        },
+        {
+          "variavel": "Auto-renovação",
+          "chave": "auto_renew",
+          "churn": 0.8,
+          "stayed": 0.8,
+          "d": 0.019,
+          "p": 0.8589,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        },
+        {
+          "variavel": "Downgrades",
+          "chave": "downs",
+          "churn": 0.43,
+          "stayed": 0.44,
+          "d": -0.017,
+          "p": 0.9326,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        },
+        {
+          "variavel": "Duração de sessão",
+          "chave": "dur",
+          "churn": 3054.28,
+          "stayed": 3056.9,
+          "d": -0.009,
+          "p": 0.9346,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        },
+        {
+          "variavel": "Erros registrados",
+          "chave": "erros",
+          "churn": 28.15,
+          "stayed": 28.23,
+          "d": -0.006,
+          "p": 0.9558,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        },
+        {
+          "variavel": "Uso de beta",
+          "chave": "pct_beta",
+          "churn": 0.1,
+          "stayed": 0.1,
+          "d": -0.003,
+          "p": 0.9779,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        },
+        {
+          "variavel": "Upgrades",
+          "chave": "ups",
+          "churn": 1.05,
+          "stayed": 1.06,
+          "d": -0.004,
+          "p": 1,
+          "nA": 110,
+          "nB": 390,
+          "significativo": false
+        }
+      ]
+    },
+    "churn_evento": {
+      "rotulo": "evento de churn",
+      "n_churn": 352,
+      "n_ficou": 148,
+      "testes": [
+        {
+          "variavel": "Upgrades",
+          "chave": "ups",
+          "churn": 1.11,
+          "stayed": 0.95,
+          "d": 0.15,
+          "p": 0.1353,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "Downgrades",
+          "chave": "downs",
+          "churn": 0.45,
+          "stayed": 0.39,
+          "d": 0.095,
+          "p": 0.3431,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "Escalações",
+          "chave": "escalacoes",
+          "churn": 0.2,
+          "stayed": 0.16,
+          "d": 0.094,
+          "p": 0.3568,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "Features distintas",
+          "chave": "features",
+          "churn": 27.76,
+          "stayed": 27.27,
+          "d": 0.088,
+          "p": 0.3867,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "Uso de beta",
+          "chave": "pct_beta",
+          "churn": 0.1,
+          "stayed": 0.1,
+          "d": -0.083,
+          "p": 0.3884,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "Tickets abertos",
+          "chave": "n_tickets",
+          "churn": 3.96,
+          "stayed": 4.09,
+          "d": -0.064,
+          "p": 0.5179,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "Tickets high/urgent",
+          "chave": "tickets_graves",
+          "churn": 2.02,
+          "stayed": 2.11,
+          "d": -0.059,
+          "p": 0.5562,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "Erros registrados",
+          "chave": "erros",
+          "churn": 28.39,
+          "stayed": 27.79,
+          "d": 0.05,
+          "p": 0.616,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "MRR",
+          "chave": "mrr",
+          "churn": 2421.83,
+          "stayed": 2607.47,
+          "d": -0.048,
+          "p": 0.6319,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "Volume de uso",
+          "chave": "usos",
+          "churn": 503.43,
+          "stayed": 495.38,
+          "d": 0.047,
+          "p": 0.6404,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "Duração de sessão",
+          "chave": "dur",
+          "churn": 3060.54,
+          "stayed": 3046.31,
+          "d": 0.045,
+          "p": 0.6516,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "Auto-renovação",
+          "chave": "auto_renew",
+          "churn": 0.8,
+          "stayed": 0.8,
+          "d": 0.029,
+          "p": 0.7685,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "Tempo até 1ª resposta",
+          "chave": "primeira_resp",
+          "churn": 88.78,
+          "stayed": 88.04,
+          "d": 0.026,
+          "p": 0.7945,
+          "nA": 347,
+          "nB": 145,
+          "significativo": false
+        },
+        {
+          "variavel": "Assinaturas",
+          "chave": "n_subs",
+          "churn": 10.02,
+          "stayed": 9.95,
+          "d": 0.024,
+          "p": 0.8209,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "Assentos",
+          "chave": "seats",
+          "churn": 20.67,
+          "stayed": 20.3,
+          "d": 0.017,
+          "p": 0.8584,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "CSAT",
+          "chave": "csat",
+          "churn": 3.96,
+          "stayed": 3.97,
+          "d": -0.015,
+          "p": 0.8808,
+          "nA": 330,
+          "nB": 136,
+          "significativo": false
+        },
+        {
+          "variavel": "Contrato anual",
+          "chave": "pct_anual",
+          "churn": 0.49,
+          "stayed": 0.49,
+          "d": -0.013,
+          "p": 0.8939,
+          "nA": 352,
+          "nB": 148,
+          "significativo": false
+        },
+        {
+          "variavel": "Tempo de resolução",
+          "chave": "tempo_res",
+          "churn": 36.24,
+          "stayed": 36.25,
+          "d": -0.001,
+          "p": 0.9918,
+          "nA": 347,
+          "nB": 145,
+          "significativo": false
+        }
+      ]
+    }
+  },
+  "segmentos": [
+    {
+      "dimensao": "industry",
+      "chi2": 1.73,
+      "p": 0.78561,
+      "groups": 5,
+      "n": 500
+    },
+    {
+      "dimensao": "referral_source",
+      "chi2": 6.87,
+      "p": 0.14559,
+      "groups": 5,
+      "n": 500
+    },
+    {
+      "dimensao": "plan_tier",
+      "chi2": 0.68,
+      "p": 0.71981,
+      "groups": 3,
+      "n": 500
+    },
+    {
+      "dimensao": "country",
+      "chi2": 4.27,
+      "p": 0.64632,
+      "groups": 7,
+      "n": 500
+    }
+  ],
+  "integridade": [
+    {
+      "problema": "A flag de churn da conta contradiz os eventos de churn registrados",
+      "n": 312,
+      "impacto": "Qualquer métrica de churn tirada da tabela de contas está errada",
+      "severidade": "critico"
+    },
+    {
+      "problema": "O motivo de saída registrado não tem relação com o que o cliente escreveu",
+      "n": 452,
+      "impacto": "Independência estatística (p=0,9568): o campo não carrega informação",
+      "severidade": "critico"
+    },
+    {
+      "problema": "Assinatura iniciada depois de a conta ter churnado",
+      "n": 330,
+      "impacto": "Impossível delimitar o ciclo de vida da conta",
+      "severidade": "alto"
+    },
+    {
+      "problema": "Uso do produto registrado depois da data de churn",
+      "n": 322,
+      "impacto": "Ou o churn não encerra o acesso, ou a data está errada",
+      "severidade": "alto"
+    },
+    {
+      "problema": "Múltiplos churns na mesma conta sem reativação registrada",
+      "n": 133,
+      "impacto": "Contagem de churn inflada",
+      "severidade": "medio"
+    },
+    {
+      "problema": "Tickets encerrados sem nota de satisfação",
+      "n": 825,
+      "impacto": "Estes tickets ficam de fora do CSAT que o time reporta",
+      "severidade": "medio"
+    }
+  ],
+  "rejeitadas": [
+    {
+      "hipotese": "Churn silencioso: os clientes saem sem nunca reclamar",
+      "teste": "5 de 352 contas que saíram nunca abriram um ticket",
+      "veredito": "REJEITADA",
+      "detalhe": "Apenas 1,4% são invisíveis ao suporte. O CS falou com praticamente todos."
+    },
+    {
+      "hipotese": "O CSAT médio esconde os insatisfeitos (viés de não-resposta)",
+      "teste": "churnou: 58,4% respondem, CSAT 3,98   ·   ficou: 59,5% respondem, CSAT 3,98",
+      "veredito": "REJEITADA",
+      "detalhe": "Taxa de resposta e nota são praticamente idênticas nos dois grupos. O CS está certo: a satisfação é real."
+    },
+    {
+      "hipotese": "Um canal de aquisição ruim está puxando o churn para cima",
+      "teste": "Deterioração medida dentro de cada canal, separadamente",
+      "veredito": "REJEITADA",
+      "detalhe": "Os cinco canais pioram entre 2023-H1 e 2024-H2. Não é problema de origem do lead."
+    },
+    {
+      "hipotese": "Existe um segmento (setor, plano, país) que concentra o churn",
+      "teste": "industry: p=0,786   ·   referral_source: p=0,146   ·   plan_tier: p=0,720   ·   country: p=0,646",
+      "veredito": "REJEITADA",
+      "detalhe": "Nenhuma dimensão demográfica atinge significância estatística."
+    }
+  ],
+  "teste_motivo": {
+    "chi2": 3.83,
+    "df": 10,
+    "p": 0.9568,
+    "n": 452
+  },
+  "economia": {
+    "novas_contas_mes": 25.3,
+    "mrr_medio_conta": 2293,
+    "churn_90d_hoje": 59.7,
+    "churn_90d_baseline": 15.6,
+    "gap_pp": 44.1,
+    "contas_salvas_mes": 11.2,
+    "mrr_recuperavel_mes": 25616,
+    "arr_recuperavel": 307388
+  },
+  "fila": [
+    {
+      "account_id": "A-d4e0d4",
+      "conta": "Company_403",
+      "industry": "FinTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "other",
+      "coorte": "2024-H2",
+      "mrr": 23283,
+      "meses": 2.4,
+      "risco_mensal_pct": 11.3,
+      "arr_em_risco": 31572,
+      "motivos": [
+        "Janela critica: 2.4 meses de casa, fase em que o risco mensal e de 11.3%",
+        "Conta de alto valor: US$ 23.283/mes",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1"
+      ],
+      "csat": 4,
+      "tickets": 4,
+      "usos": 488
+    },
+    {
+      "account_id": "A-1f0636",
+      "conta": "Company_368",
+      "industry": "EdTech",
+      "country": "AU",
+      "plano": "Enterprise",
+      "canal": "partner",
+      "coorte": "2024-H1",
+      "mrr": 20895,
+      "meses": 12,
+      "risco_mensal_pct": 7.6,
+      "arr_em_risco": 19056,
+      "motivos": [
+        "12 meses de casa — risco mensal ja estabilizado em 7.6%",
+        "Conta de alto valor: US$ 20.895/mes"
+      ],
+      "csat": 3.5,
+      "tickets": 2,
+      "usos": 685
+    },
+    {
+      "account_id": "A-9174e0",
+      "conta": "Company_73",
+      "industry": "Cybersecurity",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "partner",
+      "coorte": "2024-H2",
+      "mrr": 7363,
+      "meses": 0.9,
+      "risco_mensal_pct": 18.2,
+      "arr_em_risco": 16081,
+      "motivos": [
+        "Janela critica: 0.9 meses de casa, fase em que o risco mensal e de 18.2%",
+        "Conta de alto valor: US$ 7.363/mes",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1"
+      ],
+      "csat": 5,
+      "tickets": 2,
+      "usos": 689
+    },
+    {
+      "account_id": "A-5c046d",
+      "conta": "Company_130",
+      "industry": "EdTech",
+      "country": "FR",
+      "plano": "Enterprise",
+      "canal": "partner",
+      "coorte": "2024-H2",
+      "mrr": 18507,
+      "meses": 5.8,
+      "risco_mensal_pct": 6.4,
+      "arr_em_risco": 14213,
+      "motivos": [
+        "6 meses de casa — risco mensal ja estabilizado em 6.4%",
+        "Conta de alto valor: US$ 18.507/mes",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1"
+      ],
+      "csat": 3,
+      "tickets": 1,
+      "usos": 475
+    },
+    {
+      "account_id": "A-9badbd",
+      "conta": "Company_63",
+      "industry": "Cybersecurity",
+      "country": "DE",
+      "plano": "Enterprise",
+      "canal": "ads",
+      "coorte": "2024-H1",
+      "mrr": 11741,
+      "meses": 6.4,
+      "risco_mensal_pct": 8.7,
+      "arr_em_risco": 12258,
+      "motivos": [
+        "6 meses de casa — risco mensal ja estabilizado em 8.7%",
+        "Conta de alto valor: US$ 11.741/mes"
+      ],
+      "csat": 5,
+      "tickets": 5,
+      "usos": 729
+    },
+    {
+      "account_id": "A-e4144b",
+      "conta": "Company_316",
+      "industry": "EdTech",
+      "country": "UK",
+      "plano": "Enterprise",
+      "canal": "other",
+      "coorte": "2024-H2",
+      "mrr": 8159,
+      "meses": 2.3,
+      "risco_mensal_pct": 11.3,
+      "arr_em_risco": 11064,
+      "motivos": [
+        "Janela critica: 2.3 meses de casa, fase em que o risco mensal e de 11.3%",
+        "Conta de alto valor: US$ 8.159/mes",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1"
+      ],
+      "csat": 4,
+      "tickets": 3,
+      "usos": 439
+    },
+    {
+      "account_id": "A-1f7acb",
+      "conta": "Company_281",
+      "industry": "FinTech",
+      "country": "UK",
+      "plano": "Enterprise",
+      "canal": "ads",
+      "coorte": "2023-H2",
+      "mrr": 12736,
+      "meses": 16.9,
+      "risco_mensal_pct": 6.9,
+      "arr_em_risco": 10545,
+      "motivos": [
+        "17 meses de casa — risco mensal ja estabilizado em 6.9%",
+        "Conta de alto valor: US$ 12.736/mes"
+      ],
+      "csat": 4.4,
+      "tickets": 7,
+      "usos": 510
+    },
+    {
+      "account_id": "A-7920cc",
+      "conta": "Company_412",
+      "industry": "Cybersecurity",
+      "country": "FR",
+      "plano": "Enterprise",
+      "canal": "ads",
+      "coorte": "2023-H2",
+      "mrr": 13731,
+      "meses": 13.3,
+      "risco_mensal_pct": 5.8,
+      "arr_em_risco": 9557,
+      "motivos": [
+        "13 meses de casa — risco mensal ja estabilizado em 5.8%",
+        "Conta de alto valor: US$ 13.731/mes"
+      ],
+      "csat": 4.3,
+      "tickets": 7,
+      "usos": 601
+    },
+    {
+      "account_id": "A-883b7d",
+      "conta": "Company_313",
+      "industry": "Cybersecurity",
+      "country": "IN",
+      "plano": "Enterprise",
+      "canal": "other",
+      "coorte": "2024-H1",
+      "mrr": 9950,
+      "meses": 9.1,
+      "risco_mensal_pct": 7.9,
+      "arr_em_risco": 9433,
+      "motivos": [
+        "9 meses de casa — risco mensal ja estabilizado em 7.9%",
+        "Conta de alto valor: US$ 9.950/mes"
+      ],
+      "csat": 3.6,
+      "tickets": 7,
+      "usos": 644
+    },
+    {
+      "account_id": "A-503d5a",
+      "conta": "Company_99",
+      "industry": "FinTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "other",
+      "coorte": "2023-H2",
+      "mrr": 11144,
+      "meses": 14.4,
+      "risco_mensal_pct": 6.7,
+      "arr_em_risco": 8960,
+      "motivos": [
+        "14 meses de casa — risco mensal ja estabilizado em 6.7%",
+        "Conta de alto valor: US$ 11.144/mes"
+      ],
+      "csat": 4,
+      "tickets": 9,
+      "usos": 605
+    },
+    {
+      "account_id": "A-410e86",
+      "conta": "Company_210",
+      "industry": "FinTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "organic",
+      "coorte": "2024-H2",
+      "mrr": 4776,
+      "meses": 1.7,
+      "risco_mensal_pct": 14.6,
+      "arr_em_risco": 8368,
+      "motivos": [
+        "Janela critica: 1.7 meses de casa, fase em que o risco mensal e de 14.6%",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1",
+        "Auto-renovacao desligada na maioria das assinaturas"
+      ],
+      "csat": 3.5,
+      "tickets": 5,
+      "usos": 292
+    },
+    {
+      "account_id": "A-e89151",
+      "conta": "Company_234",
+      "industry": "FinTech",
+      "country": "UK",
+      "plano": "Enterprise",
+      "canal": "organic",
+      "coorte": "2023-H2",
+      "mrr": 8756,
+      "meses": 15.6,
+      "risco_mensal_pct": 7.5,
+      "arr_em_risco": 7880,
+      "motivos": [
+        "16 meses de casa — risco mensal ja estabilizado em 7.5%",
+        "Conta de alto valor: US$ 8.756/mes"
+      ],
+      "csat": 5,
+      "tickets": 2,
+      "usos": 601
+    },
+    {
+      "account_id": "A-35083d",
+      "conta": "Company_27",
+      "industry": "HealthTech",
+      "country": "IN",
+      "plano": "Enterprise",
+      "canal": "partner",
+      "coorte": "2023-H1",
+      "mrr": 9751,
+      "meses": 20.1,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 7138,
+      "motivos": [
+        "20 meses de casa — risco mensal ja estabilizado em 6.1%",
+        "Conta de alto valor: US$ 9.751/mes"
+      ],
+      "csat": 5,
+      "tickets": 4,
+      "usos": 791
+    },
+    {
+      "account_id": "A-b48f73",
+      "conta": "Company_225",
+      "industry": "EdTech",
+      "country": "AU",
+      "plano": "Pro",
+      "canal": "event",
+      "coorte": "2024-H2",
+      "mrr": 3920,
+      "meses": 1.6,
+      "risco_mensal_pct": 14.6,
+      "arr_em_risco": 6868,
+      "motivos": [
+        "Janela critica: 1.6 meses de casa, fase em que o risco mensal e de 14.6%",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1"
+      ],
+      "csat": 4,
+      "tickets": 3,
+      "usos": 412
+    },
+    {
+      "account_id": "A-91e948",
+      "conta": "Company_88",
+      "industry": "EdTech",
+      "country": "AU",
+      "plano": "Enterprise",
+      "canal": "partner",
+      "coorte": "2023-H1",
+      "mrr": 8159,
+      "meses": 23.1,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 5972,
+      "motivos": [
+        "23 meses de casa — risco mensal ja estabilizado em 6.1%",
+        "Conta de alto valor: US$ 8.159/mes",
+        "Predominantemente mensal — sai sem friccao contratual"
+      ],
+      "csat": null,
+      "tickets": 0,
+      "usos": 404
+    },
+    {
+      "account_id": "A-e4bf56",
+      "conta": "Company_272",
+      "industry": "HealthTech",
+      "country": "IN",
+      "plano": "Enterprise",
+      "canal": "ads",
+      "coorte": "2024-H2",
+      "mrr": 4378,
+      "meses": 2.1,
+      "risco_mensal_pct": 11.3,
+      "arr_em_risco": 5937,
+      "motivos": [
+        "Janela critica: 2.1 meses de casa, fase em que o risco mensal e de 11.3%",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1",
+        "Predominantemente mensal — sai sem friccao contratual"
+      ],
+      "csat": 3.7,
+      "tickets": 8,
+      "usos": 339
+    },
+    {
+      "account_id": "A-cbbe12",
+      "conta": "Company_450",
+      "industry": "Cybersecurity",
+      "country": "DE",
+      "plano": "Enterprise",
+      "canal": "partner",
+      "coorte": "2023-H1",
+      "mrr": 7960,
+      "meses": 21.4,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 5827,
+      "motivos": [
+        "21 meses de casa — risco mensal ja estabilizado em 6.1%",
+        "Conta de alto valor: US$ 7.960/mes",
+        "Predominantemente mensal — sai sem friccao contratual"
+      ],
+      "csat": 4.3,
+      "tickets": 6,
+      "usos": 178
+    },
+    {
+      "account_id": "A-94c3cd",
+      "conta": "Company_351",
+      "industry": "FinTech",
+      "country": "CA",
+      "plano": "Enterprise",
+      "canal": "other",
+      "coorte": "2023-H2",
+      "mrr": 6368,
+      "meses": 15.4,
+      "risco_mensal_pct": 7.5,
+      "arr_em_risco": 5731,
+      "motivos": [
+        "15 meses de casa — risco mensal ja estabilizado em 7.5%",
+        "Conta de alto valor: US$ 6.368/mes"
+      ],
+      "csat": 3.5,
+      "tickets": 4,
+      "usos": 306
+    },
+    {
+      "account_id": "A-bd4708",
+      "conta": "Company_257",
+      "industry": "FinTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "ads",
+      "coorte": "2024-H2",
+      "mrr": 7363,
+      "meses": 5.4,
+      "risco_mensal_pct": 6.4,
+      "arr_em_risco": 5655,
+      "motivos": [
+        "5 meses de casa — risco mensal ja estabilizado em 6.4%",
+        "Conta de alto valor: US$ 7.363/mes",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1"
+      ],
+      "csat": 3.5,
+      "tickets": 4,
+      "usos": 653
+    },
+    {
+      "account_id": "A-de58ca",
+      "conta": "Company_212",
+      "industry": "HealthTech",
+      "country": "DE",
+      "plano": "Enterprise",
+      "canal": "organic",
+      "coorte": "2023-H1",
+      "mrr": 7164,
+      "meses": 20.6,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 5244,
+      "motivos": [
+        "21 meses de casa — risco mensal ja estabilizado em 6.1%",
+        "Conta de alto valor: US$ 7.164/mes"
+      ],
+      "csat": 3.3,
+      "tickets": 5,
+      "usos": 505
+    },
+    {
+      "account_id": "A-068fc6",
+      "conta": "Company_465",
+      "industry": "EdTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "event",
+      "coorte": "2023-H2",
+      "mrr": 6965,
+      "meses": 17.5,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 5098,
+      "motivos": [
+        "18 meses de casa — risco mensal ja estabilizado em 6.1%",
+        "Conta de alto valor: US$ 6.965/mes",
+        "Predominantemente mensal — sai sem friccao contratual"
+      ],
+      "csat": 4.3,
+      "tickets": 5,
+      "usos": 598
+    },
+    {
+      "account_id": "A-7f8241",
+      "conta": "Company_42",
+      "industry": "EdTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "organic",
+      "coorte": "2023-H1",
+      "mrr": 6766,
+      "meses": 21.6,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 4953,
+      "motivos": [
+        "22 meses de casa — risco mensal ja estabilizado em 6.1%",
+        "Conta de alto valor: US$ 6.766/mes"
+      ],
+      "csat": 3,
+      "tickets": 1,
+      "usos": 734
+    },
+    {
+      "account_id": "A-a0ca4e",
+      "conta": "Company_6",
+      "industry": "Cybersecurity",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "ads",
+      "coorte": "2024-H1",
+      "mrr": 5174,
+      "meses": 9.8,
+      "risco_mensal_pct": 7.9,
+      "arr_em_risco": 4905,
+      "motivos": [
+        "10 meses de casa — risco mensal ja estabilizado em 7.9%",
+        "Conta de alto valor: US$ 5.174/mes"
+      ],
+      "csat": 3.8,
+      "tickets": 6,
+      "usos": 373
+    },
+    {
+      "account_id": "A-89ee83",
+      "conta": "Company_312",
+      "industry": "Cybersecurity",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "organic",
+      "coorte": "2024-H2",
+      "mrr": 3582,
+      "meses": 2.9,
+      "risco_mensal_pct": 11.3,
+      "arr_em_risco": 4857,
+      "motivos": [
+        "Janela critica: 2.9 meses de casa, fase em que o risco mensal e de 11.3%",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1"
+      ],
+      "csat": 4,
+      "tickets": 5,
+      "usos": 565
+    },
+    {
+      "account_id": "A-40906c",
+      "conta": "Company_235",
+      "industry": "EdTech",
+      "country": "US",
+      "plano": "Pro",
+      "canal": "ads",
+      "coorte": "2024-H1",
+      "mrr": 4508,
+      "meses": 9.2,
+      "risco_mensal_pct": 7.9,
+      "arr_em_risco": 4274,
+      "motivos": [
+        "9 meses de casa — risco mensal ja estabilizado em 7.9%"
+      ],
+      "csat": 3.8,
+      "tickets": 5,
+      "usos": 685
+    },
+    {
+      "account_id": "A-297a2d",
+      "conta": "Company_448",
+      "industry": "HealthTech",
+      "country": "UK",
+      "plano": "Enterprise",
+      "canal": "event",
+      "coorte": "2023-H1",
+      "mrr": 5373,
+      "meses": 19.9,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 3933,
+      "motivos": [
+        "20 meses de casa — risco mensal ja estabilizado em 6.1%",
+        "Conta de alto valor: US$ 5.373/mes"
+      ],
+      "csat": 3,
+      "tickets": 2,
+      "usos": 244
+    },
+    {
+      "account_id": "A-5a215a",
+      "conta": "Company_358",
+      "industry": "EdTech",
+      "country": "FR",
+      "plano": "Pro",
+      "canal": "other",
+      "coorte": "2024-H1",
+      "mrr": 4263,
+      "meses": 11.9,
+      "risco_mensal_pct": 7.6,
+      "arr_em_risco": 3888,
+      "motivos": [
+        "12 meses de casa — risco mensal ja estabilizado em 7.6%"
+      ],
+      "csat": 4,
+      "tickets": 4,
+      "usos": 807
+    },
+    {
+      "account_id": "A-a2485e",
+      "conta": "Company_467",
+      "industry": "FinTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "event",
+      "coorte": "2024-H2",
+      "mrr": 3383,
+      "meses": 4.9,
+      "risco_mensal_pct": 9.5,
+      "arr_em_risco": 3857,
+      "motivos": [
+        "5 meses de casa — risco mensal ja estabilizado em 9.5%",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1"
+      ],
+      "csat": null,
+      "tickets": 0,
+      "usos": 317
+    },
+    {
+      "account_id": "A-bcf87c",
+      "conta": "Company_288",
+      "industry": "FinTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "event",
+      "coorte": "2024-H1",
+      "mrr": 3383,
+      "meses": 6.1,
+      "risco_mensal_pct": 8.7,
+      "arr_em_risco": 3532,
+      "motivos": [
+        "6 meses de casa — risco mensal ja estabilizado em 8.7%"
+      ],
+      "csat": 4,
+      "tickets": 2,
+      "usos": 503
+    },
+    {
+      "account_id": "A-7d514c",
+      "conta": "Company_119",
+      "industry": "HealthTech",
+      "country": "DE",
+      "plano": "Enterprise",
+      "canal": "organic",
+      "coorte": "2024-H1",
+      "mrr": 3383,
+      "meses": 10.9,
+      "risco_mensal_pct": 8.3,
+      "arr_em_risco": 3369,
+      "motivos": [
+        "11 meses de casa — risco mensal ja estabilizado em 8.3%",
+        "Predominantemente mensal — sai sem friccao contratual"
+      ],
+      "csat": 5,
+      "tickets": 3,
+      "usos": 502
+    },
+    {
+      "account_id": "A-474ad4",
+      "conta": "Company_261",
+      "industry": "EdTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "organic",
+      "coorte": "2023-H2",
+      "mrr": 4776,
+      "meses": 13.1,
+      "risco_mensal_pct": 5.8,
+      "arr_em_risco": 3324,
+      "motivos": [
+        "13 meses de casa — risco mensal ja estabilizado em 5.8%"
+      ],
+      "csat": 5,
+      "tickets": 3,
+      "usos": 605
+    },
+    {
+      "account_id": "A-8adedc",
+      "conta": "Company_300",
+      "industry": "EdTech",
+      "country": "US",
+      "plano": "Pro",
+      "canal": "event",
+      "coorte": "2024-H1",
+      "mrr": 3332,
+      "meses": 10.6,
+      "risco_mensal_pct": 8.3,
+      "arr_em_risco": 3319,
+      "motivos": [
+        "11 meses de casa — risco mensal ja estabilizado em 8.3%"
+      ],
+      "csat": 4,
+      "tickets": 4,
+      "usos": 583
+    },
+    {
+      "account_id": "A-e2cd1b",
+      "conta": "Company_121",
+      "industry": "DevTools",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "other",
+      "coorte": "2024-H1",
+      "mrr": 3184,
+      "meses": 10.9,
+      "risco_mensal_pct": 8.3,
+      "arr_em_risco": 3171,
+      "motivos": [
+        "11 meses de casa — risco mensal ja estabilizado em 8.3%"
+      ],
+      "csat": 4,
+      "tickets": 5,
+      "usos": 465
+    },
+    {
+      "account_id": "A-7da956",
+      "conta": "Company_141",
+      "industry": "Cybersecurity",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "event",
+      "coorte": "2024-H1",
+      "mrr": 2985,
+      "meses": 7,
+      "risco_mensal_pct": 8.7,
+      "arr_em_risco": 3116,
+      "motivos": [
+        "7 meses de casa — risco mensal ja estabilizado em 8.7%"
+      ],
+      "csat": 5,
+      "tickets": 3,
+      "usos": 543
+    },
+    {
+      "account_id": "A-ff79f2",
+      "conta": "Company_165",
+      "industry": "DevTools",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "ads",
+      "coorte": "2024-H1",
+      "mrr": 3781,
+      "meses": 8.2,
+      "risco_mensal_pct": 6.5,
+      "arr_em_risco": 2949,
+      "motivos": [
+        "8 meses de casa — risco mensal ja estabilizado em 6.5%"
+      ],
+      "csat": null,
+      "tickets": 2,
+      "usos": 393
+    },
+    {
+      "account_id": "A-1986ca",
+      "conta": "Company_197",
+      "industry": "HealthTech",
+      "country": "IN",
+      "plano": "Enterprise",
+      "canal": "ads",
+      "coorte": "2023-H1",
+      "mrr": 3980,
+      "meses": 23,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 2913,
+      "motivos": [
+        "23 meses de casa — risco mensal ja estabilizado em 6.1%",
+        "Predominantemente mensal — sai sem friccao contratual"
+      ],
+      "csat": 3.4,
+      "tickets": 7,
+      "usos": 362
+    },
+    {
+      "account_id": "A-49b828",
+      "conta": "Company_391",
+      "industry": "FinTech",
+      "country": "IN",
+      "plano": "Enterprise",
+      "canal": "ads",
+      "coorte": "2023-H1",
+      "mrr": 3980,
+      "meses": 19.9,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 2913,
+      "motivos": [
+        "20 meses de casa — risco mensal ja estabilizado em 6.1%"
+      ],
+      "csat": 3.5,
+      "tickets": 3,
+      "usos": 687
+    },
+    {
+      "account_id": "A-0aaf6e",
+      "conta": "Company_114",
+      "industry": "FinTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "organic",
+      "coorte": "2024-H1",
+      "mrr": 3582,
+      "meses": 7.7,
+      "risco_mensal_pct": 6.4,
+      "arr_em_risco": 2751,
+      "motivos": [
+        "8 meses de casa — risco mensal ja estabilizado em 6.4%"
+      ],
+      "csat": 4,
+      "tickets": 5,
+      "usos": 599
+    },
+    {
+      "account_id": "A-1b7577",
+      "conta": "Company_39",
+      "industry": "Cybersecurity",
+      "country": "US",
+      "plano": "Pro",
+      "canal": "other",
+      "coorte": "2024-H2",
+      "mrr": 2009,
+      "meses": 2.1,
+      "risco_mensal_pct": 11.3,
+      "arr_em_risco": 2724,
+      "motivos": [
+        "Janela critica: 2.1 meses de casa, fase em que o risco mensal e de 11.3%",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1"
+      ],
+      "csat": 4,
+      "tickets": 5,
+      "usos": 647
+    },
+    {
+      "account_id": "A-9bfc9f",
+      "conta": "Company_228",
+      "industry": "DevTools",
+      "country": "CA",
+      "plano": "Pro",
+      "canal": "ads",
+      "coorte": "2023-H2",
+      "mrr": 2940,
+      "meses": 15.6,
+      "risco_mensal_pct": 7.5,
+      "arr_em_risco": 2646,
+      "motivos": [
+        "16 meses de casa — risco mensal ja estabilizado em 7.5%"
+      ],
+      "csat": 3.3,
+      "tickets": 6,
+      "usos": 376
+    },
+    {
+      "account_id": "A-c4ea60",
+      "conta": "Company_18",
+      "industry": "FinTech",
+      "country": "DE",
+      "plano": "Enterprise",
+      "canal": "other",
+      "coorte": "2023-H1",
+      "mrr": 3582,
+      "meses": 21.8,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 2622,
+      "motivos": [
+        "22 meses de casa — risco mensal ja estabilizado em 6.1%"
+      ],
+      "csat": 3.6,
+      "tickets": 5,
+      "usos": 427
+    },
+    {
+      "account_id": "A-8b25f2",
+      "conta": "Company_96",
+      "industry": "Cybersecurity",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "ads",
+      "coorte": "2024-H1",
+      "mrr": 2587,
+      "meses": 10.4,
+      "risco_mensal_pct": 8.3,
+      "arr_em_risco": 2577,
+      "motivos": [
+        "10 meses de casa — risco mensal ja estabilizado em 8.3%"
+      ],
+      "csat": 4,
+      "tickets": 2,
+      "usos": 565
+    },
+    {
+      "account_id": "A-6843f2",
+      "conta": "Company_335",
+      "industry": "HealthTech",
+      "country": "CA",
+      "plano": "Pro",
+      "canal": "ads",
+      "coorte": "2024-H2",
+      "mrr": 1127,
+      "meses": 0.7,
+      "risco_mensal_pct": 18.2,
+      "arr_em_risco": 2461,
+      "motivos": [
+        "Janela critica: 0.7 meses de casa, fase em que o risco mensal e de 18.2%",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1"
+      ],
+      "csat": 3,
+      "tickets": 2,
+      "usos": 481
+    },
+    {
+      "account_id": "A-50f3f7",
+      "conta": "Company_140",
+      "industry": "HealthTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "partner",
+      "coorte": "2023-H2",
+      "mrr": 6169,
+      "meses": 12.3,
+      "risco_mensal_pct": 3.2,
+      "arr_em_risco": 2369,
+      "motivos": [
+        "12 meses de casa — risco mensal ja estabilizado em 3.2%",
+        "Conta de alto valor: US$ 6.169/mes"
+      ],
+      "csat": 5,
+      "tickets": 6,
+      "usos": 685
+    },
+    {
+      "account_id": "A-45ce7a",
+      "conta": "Company_31",
+      "industry": "FinTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "ads",
+      "coorte": "2023-H2",
+      "mrr": 3184,
+      "meses": 17.3,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 2331,
+      "motivos": [
+        "17 meses de casa — risco mensal ja estabilizado em 6.1%",
+        "Predominantemente mensal — sai sem friccao contratual"
+      ],
+      "csat": 3.7,
+      "tickets": 5,
+      "usos": 424
+    },
+    {
+      "account_id": "A-625d0b",
+      "conta": "Company_290",
+      "industry": "EdTech",
+      "country": "AU",
+      "plano": "Enterprise",
+      "canal": "ads",
+      "coorte": "2024-H2",
+      "mrr": 1791,
+      "meses": 3.9,
+      "risco_mensal_pct": 10.5,
+      "arr_em_risco": 2257,
+      "motivos": [
+        "4 meses de casa — risco mensal ja estabilizado em 10.5%",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1"
+      ],
+      "csat": 3,
+      "tickets": 5,
+      "usos": 529
+    },
+    {
+      "account_id": "A-fd9422",
+      "conta": "Company_263",
+      "industry": "Cybersecurity",
+      "country": "US",
+      "plano": "Pro",
+      "canal": "organic",
+      "coorte": "2024-H1",
+      "mrr": 2842,
+      "meses": 8.9,
+      "risco_mensal_pct": 6.5,
+      "arr_em_risco": 2217,
+      "motivos": [
+        "9 meses de casa — risco mensal ja estabilizado em 6.5%"
+      ],
+      "csat": 3.5,
+      "tickets": 6,
+      "usos": 456
+    },
+    {
+      "account_id": "A-d5a319",
+      "conta": "Company_158",
+      "industry": "FinTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "other",
+      "coorte": "2023-H1",
+      "mrr": 2985,
+      "meses": 19.9,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 2185,
+      "motivos": [
+        "20 meses de casa — risco mensal ja estabilizado em 6.1%"
+      ],
+      "csat": 4,
+      "tickets": 1,
+      "usos": 604
+    },
+    {
+      "account_id": "A-d40bf7",
+      "conta": "Company_11",
+      "industry": "FinTech",
+      "country": "IN",
+      "plano": "Basic",
+      "canal": "organic",
+      "coorte": "2024-H2",
+      "mrr": 1121,
+      "meses": 1.7,
+      "risco_mensal_pct": 14.6,
+      "arr_em_risco": 1964,
+      "motivos": [
+        "Janela critica: 1.7 meses de casa, fase em que o risco mensal e de 14.6%",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1"
+      ],
+      "csat": 5,
+      "tickets": 2,
+      "usos": 562
+    },
+    {
+      "account_id": "A-4a4c2d",
+      "conta": "Company_473",
+      "industry": "DevTools",
+      "country": "US",
+      "plano": "Pro",
+      "canal": "event",
+      "coorte": "2023-H1",
+      "mrr": 2646,
+      "meses": 20,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 1937,
+      "motivos": [
+        "20 meses de casa — risco mensal ja estabilizado em 6.1%"
+      ],
+      "csat": 4.3,
+      "tickets": 5,
+      "usos": 587
+    },
+    {
+      "account_id": "A-fe79a5",
+      "conta": "Company_81",
+      "industry": "HealthTech",
+      "country": "IN",
+      "plano": "Enterprise",
+      "canal": "ads",
+      "coorte": "2024-H1",
+      "mrr": 1791,
+      "meses": 10.3,
+      "risco_mensal_pct": 8.3,
+      "arr_em_risco": 1784,
+      "motivos": [
+        "10 meses de casa — risco mensal ja estabilizado em 8.3%"
+      ],
+      "csat": 5,
+      "tickets": 4,
+      "usos": 335
+    },
+    {
+      "account_id": "A-0158bb",
+      "conta": "Company_461",
+      "industry": "FinTech",
+      "country": "DE",
+      "plano": "Pro",
+      "canal": "partner",
+      "coorte": "2024-H1",
+      "mrr": 2205,
+      "meses": 7.3,
+      "risco_mensal_pct": 6.4,
+      "arr_em_risco": 1693,
+      "motivos": [
+        "7 meses de casa — risco mensal ja estabilizado em 6.4%"
+      ],
+      "csat": 3,
+      "tickets": 1,
+      "usos": 364
+    },
+    {
+      "account_id": "A-9a532a",
+      "conta": "Company_333",
+      "industry": "HealthTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "partner",
+      "coorte": "2024-H2",
+      "mrr": 2189,
+      "meses": 5.8,
+      "risco_mensal_pct": 6.4,
+      "arr_em_risco": 1681,
+      "motivos": [
+        "6 meses de casa — risco mensal ja estabilizado em 6.4%",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1",
+        "Predominantemente mensal — sai sem friccao contratual"
+      ],
+      "csat": null,
+      "tickets": 2,
+      "usos": 185
+    },
+    {
+      "account_id": "A-4c38bc",
+      "conta": "Company_55",
+      "industry": "HealthTech",
+      "country": "UK",
+      "plano": "Pro",
+      "canal": "event",
+      "coorte": "2024-H1",
+      "mrr": 1764,
+      "meses": 9.8,
+      "risco_mensal_pct": 7.9,
+      "arr_em_risco": 1672,
+      "motivos": [
+        "10 meses de casa — risco mensal ja estabilizado em 7.9%"
+      ],
+      "csat": 3.5,
+      "tickets": 3,
+      "usos": 818
+    },
+    {
+      "account_id": "A-55f257",
+      "conta": "Company_496",
+      "industry": "FinTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "organic",
+      "coorte": "2023-H2",
+      "mrr": 4179,
+      "meses": 12.4,
+      "risco_mensal_pct": 3.2,
+      "arr_em_risco": 1605,
+      "motivos": [
+        "12 meses de casa — risco mensal ja estabilizado em 3.2%"
+      ],
+      "csat": 5,
+      "tickets": 6,
+      "usos": 476
+    },
+    {
+      "account_id": "A-9c18c4",
+      "conta": "Company_481",
+      "industry": "HealthTech",
+      "country": "US",
+      "plano": "Enterprise",
+      "canal": "ads",
+      "coorte": "2023-H2",
+      "mrr": 2189,
+      "meses": 17.2,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 1602,
+      "motivos": [
+        "17 meses de casa — risco mensal ja estabilizado em 6.1%"
+      ],
+      "csat": 4,
+      "tickets": 4,
+      "usos": 556
+    },
+    {
+      "account_id": "A-fdfc91",
+      "conta": "Company_414",
+      "industry": "Cybersecurity",
+      "country": "US",
+      "plano": "Basic",
+      "canal": "ads",
+      "coorte": "2023-H1",
+      "mrr": 2109,
+      "meses": 19.9,
+      "risco_mensal_pct": 6.1,
+      "arr_em_risco": 1544,
+      "motivos": [
+        "20 meses de casa — risco mensal ja estabilizado em 6.1%"
+      ],
+      "csat": 3.7,
+      "tickets": 5,
+      "usos": 564
+    },
+    {
+      "account_id": "A-88c6ca",
+      "conta": "Company_179",
+      "industry": "FinTech",
+      "country": "DE",
+      "plano": "Pro",
+      "canal": "ads",
+      "coorte": "2024-H2",
+      "mrr": 1127,
+      "meses": 2.2,
+      "risco_mensal_pct": 11.3,
+      "arr_em_risco": 1528,
+      "motivos": [
+        "Janela critica: 2.2 meses de casa, fase em que o risco mensal e de 11.3%",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1",
+        "Predominantemente mensal — sai sem friccao contratual"
+      ],
+      "csat": null,
+      "tickets": 1,
+      "usos": 446
+    },
+    {
+      "account_id": "A-ad296b",
+      "conta": "Company_112",
+      "industry": "DevTools",
+      "country": "AU",
+      "plano": "Pro",
+      "canal": "event",
+      "coorte": "2024-H2",
+      "mrr": 1862,
+      "meses": 5.6,
+      "risco_mensal_pct": 6.4,
+      "arr_em_risco": 1430,
+      "motivos": [
+        "6 meses de casa — risco mensal ja estabilizado em 6.4%",
+        "Safra 2024-H2, que perde 59.7% em 90 dias contra 15.6% da safra 2023-H1"
+      ],
+      "csat": 3.7,
+      "tickets": 3,
+      "usos": 294
+    },
+    {
+      "account_id": "A-e36807",
+      "conta": "Company_164",
+      "industry": "EdTech",
+      "country": "AU",
+      "plano": "Enterprise",
+      "canal": "other",
+      "coorte": "2024-H1",
+      "mrr": 1791,
+      "meses": 7.5,
+      "risco_mensal_pct": 6.4,
+      "arr_em_risco": 1375,
+      "motivos": [
+        "7 meses de casa — risco mensal ja estabilizado em 6.4%"
+      ],
+      "csat": 4.5,
+      "tickets": 2,
+      "usos": 446
+    }
+  ]
+}
