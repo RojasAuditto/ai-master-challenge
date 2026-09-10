@@ -22,7 +22,7 @@ Os gráficos são SVG escrito à mão pelo mesmo motivo, mais um: nenhuma charti
 
 ### 1. Marca antes de dado
 
-Antes de abrir os CSVs, extraí a identidade visual do G4 direto do SVG oficial do site (`logo-g4-completa-branca.svg`): `#F5F4F3`, `#B9915B` (o dourado editorial) e `#001F35`. A tipografia do site é Manrope + PPMuseum; como PPMuseum é comercial, usei Instrument Serif como equivalente livre para os títulos.
+Antes de abrir os CSVs, extraí a identidade visual do G4 direto do SVG oficial do site (`logo-g4-completa-branca.svg`): `#F5F4F3`, `#B9915B` (o dourado editorial), `#001F35` (navy) e `#842E20` (tijolo). O dourado puro tem ~2,6:1 de contraste sobre branco — baixo demais para texto —, então onde ele precisa ser lido usei uma variante escurecida a ~5,6:1. A marca fica intacta; a legibilidade também.
 
 ### 2. O README do dataset mudou o plano
 
@@ -114,11 +114,35 @@ Isso muda a recomendação de "monte um modelo de risco e um playbook de salvame
 
 Por isso também não construí modelo preditivo, apesar de ser sugerido como diferencial: treinado nesses dados, teria performance de moeda ao ar, com aparência de rigor.
 
-### 9. Construção do app
+### 9. O formato errado, e a reconstrução
+
+A primeira versão do app era uma dissertação: nove seções em ordem argumentativa, num scroll único, tema escuro. Estava bem executada e estava errada.
+
+O erro foi projetar para quem lê do começo ao fim. O leitor real é um CEO não-técnico que já declarou estar sem resposta — ele não desce nove seções. E não é um leitor só: são três, com necessidades incompatíveis.
+
+| Quem | Precisa de | Tempo real |
+|---|---|---|
+| CEO | A resposta, a confiança e o que fazer | ~3 min |
+| Head de CS/Dados, a quem ele encaminha | Verificar se o número aguenta questionamento | ~20 min |
+| Analista de CS | A fila de contas | Todo dia |
+
+Servir os três com o mesmo scroll linear atende mal os três. Reconstruí em **resposta primeiro, prova sob demanda**:
+
+- A primeira tela entrega o diagnóstico, os quatro números e as três frentes de ação. O CEO decide ali.
+- A evidência que sustenta cada afirmação — hipóteses rejeitadas, os 36 testes, sobrevivência, integridade, método — virou blocos expansíveis. A afirmação fica sempre visível; o teste abre ao clicar. Quem duvida verifica; quem não duvida não paga o custo de rolar.
+- A fila do CS saiu para uma **rota própria** (`/fila`), porque é outra pessoa em outro dia, e porque assim tem URL própria para mandar direto ao time.
+
+O que mantive foi a sequência paradoxo → resolução. Ela não é enfeite narrativo: é o que derruba a objeção "mas o produto disse que o uso subiu" antes de ela ser feita.
+
+### 10. Construção do app
 
 Nove seções em ordem argumentativa, não em ordem de dashboard: paradoxo → resolução → o que descartei → por que não dá para prever → o que fazer → a fila → dados quebrados → método.
 
+Tema claro sobre a paleta da marca, Montserrat, sidebar retrátil com estado persistido, e animação de entrada em todos os gráficos — barras crescem da base, linhas se desenham, contadores sobem. Não é enfeite: a animação escalonada faz o olho ler o gráfico na ordem em que o argumento acontece.
+
 A revisão visual foi feita com screenshots em headless Edge, lidos e corrigidos em ciclo. Isso pegou coisas que o código não denuncia: o gráfico de linhas invertendo a mensagem, rótulos de canal sobrepostos, eixo colidindo com o título, "6,8%depois" sem espaço, decimais com ponto em vez de vírgula, e uma coluna "2,4M" que lia como "2,4 milhões" em vez de "2,4 meses".
+
+**Um risco que a animação criou e que precisei fechar:** se a entrada depende de JavaScript, uma falha do IntersectionObserver deixa a página em branco. Conteúdo invisível é pior que animação perdida. Coloquei três redes: `prefers-reduced-motion` entrega tudo estático, um `<noscript>`-equivalente mostra o conteúdo sem JS, e um timeout de 2,5s revela qualquer bloco que o observer não tenha alcançado.
 
 ---
 

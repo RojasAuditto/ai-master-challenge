@@ -1,68 +1,110 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 const SECOES = [
-  { id: 'diagnostico', n: '01', label: 'Diagnóstico' },
-  { id: 'paradoxo', n: '02', label: 'O paradoxo' },
-  { id: 'causa', n: '03', label: 'A causa raiz' },
-  { id: 'descartado', n: '04', label: 'O que descartei' },
-  { id: 'preditor', n: '05', label: 'Quem vai sair?' },
-  { id: 'acao', n: '06', label: 'Plano de ação' },
-  { id: 'fila', n: '07', label: 'Fila do CS' },
-  { id: 'dados', n: '08', label: 'Dados quebrados' },
-  { id: 'metodo', n: '09', label: 'Método' },
+  { id: 'resposta', label: 'A resposta' },
+  { id: 'paradoxo', label: 'Por que ninguém viu' },
+  { id: 'causa', label: 'A causa raiz' },
+  { id: 'prova', label: 'A prova' },
+  { id: 'acao', label: 'O que fazer' },
 ];
 
-export default function Sidebar({ asof, linhas }) {
-  const [ativo, setAtivo] = useState('diagnostico');
+const Ico = ({ children }) => (
+  <span className="ic" aria-hidden="true">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">{children}</svg>
+  </span>
+);
+
+export default function Sidebar({ asof, linhas, contasFila }) {
+  const rota = usePathname();
+  const [fechada, setFechada] = useState(false);
+  const [secao, setSecao] = useState('resposta');
+
+  // Preferência de sidebar sobrevive à navegação e ao reload.
+  useEffect(() => {
+    try {
+      if (localStorage.getItem('g4-sidebar') === 'fechada') setFechada(true);
+    } catch { /* modo privado bloqueia storage; segue aberta */ }
+  }, []);
+  const alternar = () => {
+    setFechada((f) => {
+      try { localStorage.setItem('g4-sidebar', f ? 'aberta' : 'fechada'); } catch { /* ignora */ }
+      return !f;
+    });
+  };
 
   useEffect(() => {
+    if (rota !== '/') return;
     const alvos = SECOES.map((s) => document.getElementById(s.id)).filter(Boolean);
-    // A secao "ativa" e a ultima cujo topo ja passou do terco superior da tela.
+    if (!alvos.length) return;
     const obs = new IntersectionObserver(
-      (entradas) => {
-        const visiveis = entradas.filter((e) => e.isIntersecting);
-        if (visiveis.length) {
-          setAtivo(visiveis.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0].target.id);
-        }
+      (ents) => {
+        const vis = ents.filter((e) => e.isIntersecting);
+        if (vis.length) setSecao(vis.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0].target.id);
       },
-      { rootMargin: '-12% 0px -70% 0px', threshold: 0 }
+      { rootMargin: '-12% 0px -70% 0px' }
     );
     alvos.forEach((t) => obs.observe(t));
     return () => obs.disconnect();
-  }, []);
+  }, [rota]);
 
   return (
-    <aside className="sidebar">
-      <div className="brand">
-        {/* Logo oficial, versao branca — g4business.com/wp-content/uploads/2026/01/logo-g4-completa-branca.svg */}
-        <img src="/g4-branca.svg" alt="G4 Educação" />
-        <div>
-          <div className="kicker">AI Master Challenge</div>
-          <div className="sub">
-            Challenge 001 · Diagnóstico de Churn
-            <br />
-            RavenStack — SaaS B2B
-          </div>
+    <aside className="sidebar" data-fechada={fechada}>
+      <div className="sbtop">
+        <div className="sblogo">
+          {/* Logo oficial do G4, versão branca sobre o navy da própria marca. */}
+          <span style={{
+            background: '#001f35', borderRadius: 9, padding: '8px 10px',
+            display: 'grid', placeItems: 'center', flex: 'none',
+          }}>
+            <img src="/g4-branca.svg" alt="G4 Educação" />
+          </span>
         </div>
+        <button className="sbtoggle" onClick={alternar}
+          aria-label={fechada ? 'Expandir menu' : 'Recolher menu'} title={fechada ? 'Expandir menu' : 'Recolher menu'}>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+            strokeLinecap="round" strokeLinejoin="round"
+            style={{ transform: fechada ? 'rotate(180deg)' : 'none', transition: 'transform .22s' }}>
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
       </div>
 
+      {!fechada && (
+        <div style={{ padding: '0 4px', marginTop: -10 }}>
+          <div className="sbkicker">AI Master Challenge</div>
+          <div className="sbsub">Challenge 001 · RavenStack</div>
+        </div>
+      )}
+
       <nav className="navgroup">
-        <div className="label">Diagnóstico</div>
-        {SECOES.map((s) => (
-          <a key={s.id} href={`#${s.id}`} className="navitem" data-active={ativo === s.id}>
-            <span className="n">{s.n}</span>
-            {s.label}
-          </a>
+        <div className="navlabel">Entregável</div>
+
+        <Link href="/" className="navitem" data-active={rota === '/'} title="Diagnóstico">
+          <Ico><path d="M3 3v18h18" /><path d="M18 9l-5 5-3-3-4 4" /></Ico>
+          <span className="navtxt">Diagnóstico</span>
+        </Link>
+        {rota === '/' && !fechada && SECOES.map((s) => (
+          <a key={s.id} href={`#${s.id}`} className="navsub" data-active={secao === s.id}>{s.label}</a>
         ))}
+
+        <Link href="/fila" className="navitem" data-active={rota === '/fila'} title="Fila do CS"
+          style={{ marginTop: rota === '/' ? 8 : 0 }}>
+          <Ico><path d="M8 6h13" /><path d="M8 12h13" /><path d="M8 18h13" /><path d="M3 6h.01" /><path d="M3 12h.01" /><path d="M3 18h.01" /></Ico>
+          <span className="navtxt">Fila do CS</span>
+          {!fechada && (
+            <span className="tag gold" style={{ marginLeft: 'auto', fontSize: 9.5 }}>{contasFila}</span>
+          )}
+        </Link>
       </nav>
 
-      <div className="sidefoot">
-        <strong>{linhas.toLocaleString('pt-BR')} linhas</strong> analisadas nas 5 tabelas.
-        <br />
-        Dados até <strong>{asof}</strong>.
-        <br />
-        <span style={{ opacity: 0.75 }}>Todo número desta página sai de uma query versionada.</span>
+      <div className="sbfoot">
+        <strong>{linhas.toLocaleString('pt-BR')} linhas</strong> analisadas nas 5 tabelas.<br />
+        Dados até <strong>{asof}</strong>.<br />
+        <span style={{ opacity: 0.8 }}>Todo número sai de uma query versionada.</span>
       </div>
     </aside>
   );

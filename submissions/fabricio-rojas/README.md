@@ -20,7 +20,10 @@ Testei 18 variáveis comportamentais contra duas definições de churn — **36 
 
 ## Solução
 
-O deliverable é um **diagnóstico navegável** rodando como aplicação web — 9 seções que levam o leitor do paradoxo até a fila de contas para trabalhar na segunda-feira.
+O deliverable é uma aplicação web com **duas visões**, porque são dois usuários diferentes:
+
+- **`/` — Diagnóstico.** Resposta primeiro: a primeira tela traz o achado, os quatro números e as três frentes de ação. Abaixo, a narrativa que resolve o paradoxo e, em blocos expansíveis, toda a evidência que sustenta cada afirmação — para quem precisar defender o número numa reunião.
+- **`/fila` — Fila do CS.** A lista de contas ativas ordenada por ARR exposto, com o motivo de cada uma. É ferramenta de trabalho diário, não relatório.
 
 ```
 submissions/fabricio-rojas/
@@ -80,8 +83,8 @@ Antes de afirmar qualquer causa, testei se havia sinal. Usei testes de permutaç
 
 - **A causa raiz é inferida por eliminação, não observada.** Os dados não têm eventos de onboarding, ativação ou mudanças de produto. Provo *que* a experiência de entrada piorou e *que* não é composição, canal ou segmento — mas não *o que exatamente* mudou. Seria desonesto afirmar mais que isso.
 - **O último mês está parcialmente censurado.** A janela encerra em 2024-12-31 em todas as tabelas.
-- **O dataset é sintético.** As inconsistências que reporto na seção 08 podem ser artefatos do gerador, não de um sistema real. Tratei-as como reais porque a análise correta é a mesma nos dois casos: se os dados chegam assim, não dá para responder a pergunta com eles.
-- Não construí modelo preditivo. Foi decisão, não falta de tempo — está justificada na seção 05.
+- **O dataset é sintético.** As inconsistências que reporto no bloco de integridade podem ser artefatos do gerador, não de um sistema real. Tratei-as como reais porque a análise correta é a mesma nos dois casos: se os dados chegam assim, não dá para responder a pergunta com eles.
+- Não construí modelo preditivo. Foi decisão, não falta de tempo — está justificada no bloco “Nenhuma variável prevê qual conta vai churnar”.
 
 ---
 
@@ -94,17 +97,18 @@ Antes de afirmar qualquer causa, testei se havia sinal. Usei testes de permutaç
 | Ferramenta | Para que usei |
 |------------|--------------|
 | Claude Code (Opus 5) | Exploração dos dados via SQL, implementação dos testes de permutação, construção do app, revisão visual por screenshot |
+| Headless Edge | Screenshots da própria aplicação, lidos em ciclo para revisar o design |
 | SQLite (`node:sqlite`) | Cruzamento das 5 tabelas |
-| Headless Edge | Screenshots da aplicação para revisar o próprio design |
 
 ### Onde a IA errou e como corrigi
 
-Quatro erros reais, todos registrados no log com o momento em que apareceram:
+Cinco erros reais, todos registrados no log com o momento em que apareceram:
 
 1. **Tabela de coorte com 140,3% de churn.** O denominador não tratava censura — contas de 2024-H2 não têm 3 meses de observação. Só peguei porque um percentual acima de 100% é impossível. Foi o erro mais perigoso: qualquer valor abaixo de 100% teria passado despercebido e distorcido a conclusão central.
 2. **Gráfico que contradizia a própria conclusão.** A primeira versão do gráfico de coorte usava linhas. Como cada safra tem janela de observação diferente, a safra mais antiga aparecia no topo — um CEO leria exatamente o oposto do achado. Refiz como barras no mesmo horizonte.
 3. **Resultados não reproduzíveis.** Os testes de permutação usavam `Math.random()`, então cada execução dava um p-valor diferente (0,9541 → 0,9578). Chamar isso de "reproduzível" seria falso. Troquei por um PRNG com semente fixa.
 4. **Parâmetro no lugar errado** em `db.prepare(sql, param)` — deveria ser `.all(param)`. Erro comum de API, pego pelo build.
+5. **O formato inteiro estava errado.** A primeira versão era uma dissertação de nove seções em scroll único. Bem executada, e endereçada ao leitor errado: um CEO não desce nove seções. Reconstruí em resposta primeiro com prova sob demanda, e separei a fila do CS em rota própria — são três leitores com necessidades incompatíveis, não um.
 
 ### O que eu adicionei que a IA sozinha não faria
 
