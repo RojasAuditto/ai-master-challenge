@@ -16,11 +16,13 @@ const comprimento = (pts) => pts.reduce((s, p, i) => (i ? s + Math.hypot(p[0] - 
 function Tip({ x, y, w = 150, linhas, W }) {
   const px = Math.min(Math.max(x - w / 2, 6), W - w - 6);
   const h = 14 + linhas.length * 15;
+  // Sem espaço em cima (barra alta), abre para baixo do ponto.
+  const py = y - h - 10 < 0 ? y + 14 : y - h - 10;
   return (
     <g style={{ pointerEvents: 'none' }}>
-      <rect x={px} y={y - h - 10} width={w} height={h} rx="8" fill={NAVY} opacity=".96" />
+      <rect x={px} y={py} width={w} height={h} rx="8" fill={NAVY} opacity=".96" />
       {linhas.map((l, i) => (
-        <text key={i} x={px + 10} y={y - h + 9 + i * 15} fontSize="10.5" fill={i ? '#c2cfd9' : '#fff'} fontWeight={i ? 500 : 700}>{l}</text>
+        <text key={i} x={px + 10} y={py + 19 + i * 15} fontSize="10.5" fill={i ? '#c2cfd9' : '#fff'} fontWeight={i ? 500 : 700}>{l}</text>
       ))}
     </g>
   );

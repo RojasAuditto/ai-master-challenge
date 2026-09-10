@@ -78,7 +78,9 @@ h1, h2, h3, p { margin: 0; }
 .sb-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 40px; }
 .sb-brand { display: flex; align-items: center; gap: 11px; min-width: 0; }
 .sb-brand img { width: 64px; height: auto; display: block; flex: none; }
-.sb[data-min='true'] .sb-brand img { width: 36px; object-fit: cover; object-position: left; }
+.sb[data-min='true'] .sb-top { flex-direction: column; gap: 10px; }
+.sb[data-min='true'] .sb-brand { justify-content: center; }
+.sb[data-min='true'] .sb-brand img { width: 30px; height: 30px; object-fit: cover; object-position: left center; }
 .sb-brand .t { font-size: 11px; line-height: 1.35; color: #8ea2b3; white-space: nowrap; }
 .sb-brand .t b { display: block; color: #fff; font-weight: 700; font-size: 12px; }
 
@@ -285,6 +287,9 @@ tbody tr.click:hover td { background: var(--surface-2); }
 .in input:focus, .in select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-bg); }
 .in input[type='range'] { padding: 0; accent-color: var(--gold); height: 28px; border: 0; }
 .in .val { font-size: 12px; color: var(--ink-3); font-weight: 600; }
+
+/* Gráficos: tooltip pode ultrapassar a caixa do SVG */
+.page svg[role='img'] { overflow: visible; }
 
 /* Animação de entrada */
 .rise { opacity: 0; transform: translateY(12px); transition: opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1); }
