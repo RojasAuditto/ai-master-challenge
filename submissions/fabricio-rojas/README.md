@@ -43,8 +43,8 @@ Cada `solution/<challenge>/README.md` segue o template oficial na íntegra. Cada
 | Método | Coorte com censura, permutação (20.000), AUC | Split temporal, AUC por fator, curva condicional, calibração |
 | Achado central | Deterioração por safra, 3,8× na mesma idade | Quem chega longe fecha mais; 81% do pipeline é zumbi |
 | Resultado negativo | 0/36 preditores individuais | "Quem" não prevê fechamento |
-| Entrega | App claro, 6 rotas: resposta primeiro, prova sob demanda, fila do CS, modelo de risco | App escuro, 4 rotas: filas por verbo, gaveta com o porquê, equipe com IC, método |
-| Diferenciais do brief | Modelo (AUC 0,72), interativo, automação CS, análise não pedida | Roda, dados reais, score explicável, filtro por vendedor/gerente/região |
+| Entrega | App claro, 6 rotas: resposta primeiro, prova sob demanda, fila do CS, modelo de risco | App escuro no vocabulário das refs de produto: filas por verbo, página do deal com o porquê e notas, equipe com IC, stepper do método, API do score |
+| Diferenciais do brief | Modelo (AUC 0,72), interativo, automação CS, análise não pedida | Roda, dados reais, score explicável, filtro por vendedor/gerente/região, API que retorna score + explicação |
 
 ### Abordagem · Resultados · Recomendações · Limitações
 

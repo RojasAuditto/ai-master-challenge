@@ -87,8 +87,27 @@ Animações: contadores, barras que crescem, gaveta que desliza, tabela com fade
 
 **Ler o pipeline como pipeline, não como dataset.** 62% dos deals abertos estão além do ciclo máximo já observado. Um modelo trataria isso como "idade alta = ótimo sinal". Um vendedor sabe que é um pipeline sujo. A fila "Decidir" é a diferença entre as duas leituras.
 
-## 7. O que eu faria com mais tempo
+## 7. Reconstrução completa: das cores da marca ao vocabulário das referências
 
-- Um botão "confirmar vivo / encerrar" que grava a decisão e recalcula o pipeline — hoje o app é read-only sobre um snapshot.
+A primeira versão estava certa no dado e errada na experiência: navy e dourado da marca, cards uniformes, gaveta lateral, muito texto. O pedido foi refazer 100% a partir das referências de produto — e refazer mesmo, não retocar.
+
+**O que mudou de verdade:**
+
+- **Paleta tirada das refs, não da marca.** Carvão neutro (`#0B0D11`), cards a `#12151A`, bordas a 7% de branco, acento lima (`#C9F55B`), gradiente roxo→azul para a barra de valor esperado, botão primário branco em pill, Inter. Da G4 ficou só o logo — em preto sobre o quadrado lima, como o ícone do Coinstax.
+- **Estrutura de projeto.** `components/{layout,ui,charts,pipeline,deal,equipe,metodo}`, `lib/explain.js` compartilhado, rota real `/deal/[id]` em vez de gaveta, API `GET /api/score/[id]`.
+- **Sidebar Riter**: busca ⌘K, grupos, **árvore de gerentes** expansível que filtra a Equipe, "Limites do score · Leia", Configurações em caixa com preferências reais (animações on/off, vendedor padrão), card do usuário com ⋮, recolhe para trilho de ícones.
+- **Home Coinstax**: título grande + frase com números em negrito, três cards de destaque com a listra lima no primeiro, segmented pill com indicador que desliza, tabela com avatar circular + nome/subtítulo e pills de variação com ▲▼, card Monthly Budget para o valor esperado, atividade recente.
+- **Deal no padrão invoice**: folha à esquerda com linhas ícone·chave·valor (o padrão do Task Detail), card "Amount" com o valor esperado, linha do tempo de como o score foi montado com ícones coloridos, caixa de "Registrar próxima ação" que grava no navegador.
+- **Método Untitled UI**: stepper de quatro passos com sublinhado lima animado, card "Summary" com a validação.
+- **Tudo que é gráfico anima**: curva que se desenha, barras de AUC que crescem a partir de 0,50, anel de score que fecha, barra de gradiente, composição do pipeline, contadores.
+
+**O erro dessa rodada.** A tabela da home ficou com oito colunas numa coluna de 760 px: o "Score" saiu pela direita. Vi na captura, não no código. Ticket migrou para o subtítulo do deal (o Coinstax também não gasta coluna com o que cabe no nome), a coluna de seta saiu, a página alargou para 1280 e a lateral encolheu para 320.
+
+**Revisão do que foi proposto vs. entregue** está na tabela "Checklist do brief" do README da solução. Dois itens ficaram deliberadamente de fora: o modelo de ML (não há sinal fora da amostra) e o bot de Slack (a API deixa pronto; fora do tempo).
+
+## 8. O que eu faria com mais tempo
+
+- Gravar as notas e a decisão "confirmar vivo / encerrar" no CRM e recalcular — hoje ficam no navegador.
+- Bot de Slack com as prioridades da segunda-feira: uma chamada à API por vendedor.
 - Calibrar os multiplicadores das janelas com dado de esforço (horas por deal), se existisse.
 - Curva condicional por produto, se a amostra permitisse; hoje é única para não fragmentar demais.
