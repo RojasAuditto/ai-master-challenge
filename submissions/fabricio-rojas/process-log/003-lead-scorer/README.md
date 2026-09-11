@@ -93,7 +93,7 @@ A primeira versão estava certa no dado e errada na experiência: navy e dourado
 
 **O que mudou de verdade:**
 
-- **Paleta tirada das refs, não da marca.** Carvão neutro (`#0B0D11`), cards a `#12151A`, bordas a 7% de branco, acento lima (`#C9F55B`), gradiente roxo→azul para a barra de valor esperado, botão primário branco em pill, Inter. Da G4 ficou só o logo — em preto sobre o quadrado lima, como o ícone do Coinstax.
+- **Paleta tirada das refs, não da marca.** Carvão (`#0B0D11`, ainda puxado para o azul), cards a `#12151A`, bordas a 7% de branco, acento lima (`#C9F55B`), gradiente roxo→azul para a barra de valor esperado, botão primário branco em pill, Inter. Da G4 ficou só o logo — em preto sobre o quadrado lima, como o ícone do Coinstax.
 - **Estrutura de projeto.** `components/{layout,ui,charts,pipeline,deal,equipe,metodo}`, `lib/explain.js` compartilhado, rota real `/deal/[id]` em vez de gaveta, API `GET /api/score/[id]`.
 - **Sidebar Riter**: busca ⌘K, grupos, **árvore de gerentes** expansível que filtra a Equipe, "Limites do score · Leia", Configurações em caixa com preferências reais (animações on/off, vendedor padrão), card do usuário com ⋮, recolhe para trilho de ícones.
 - **Home Coinstax**: título grande + frase com números em negrito, três cards de destaque com a listra lima no primeiro, segmented pill com indicador que desliza, tabela com avatar circular + nome/subtítulo e pills de variação com ▲▼, card Monthly Budget para o valor esperado, atividade recente.
@@ -105,7 +105,19 @@ A primeira versão estava certa no dado e errada na experiência: navy e dourado
 
 **Revisão do que foi proposto vs. entregue** está na tabela "Checklist do brief" do README da solução. Dois itens ficaram deliberadamente de fora: o modelo de ML (não há sinal fora da amostra) e o bot de Slack (a API deixa pronto; fora do tempo).
 
-## 8. O que eu faria com mais tempo
+## 8. Terceira rodada: mais escuro, mais neutro, menos coisa na tela
+
+O pedido veio com uma referência de paleta de comandos e três verbos: escurecer, neutralizar, limpar. Não é retoque de cor; é tirar o que não paga o próprio espaço.
+
+- **Paleta neutra de verdade.** O carvão anterior tinha azul (`#0B0D11`). Agora o fundo é `#0A0A0A`, a sidebar `#0C0C0C`, os cards em cinzas puros (`#131313`, `#191919`, `#202020`) e as bordas a 5–9% de branco. Lima, verde, vermelho, azul e roxo continuam só onde carregam significado (filas, variação, gradiente do valor esperado).
+- **Sidebar mínima.** Saíram os grupos com rótulo, o badge da fila, a caixa "Configurações" e o card "Limites do score · Leia". Ficou: marca, busca ⌘K, cinco destinos (Segunda-feira, Todos os deals, Equipe com a árvore de gerentes, Dados do CRM, Como funciona) e o usuário. Preferências (animações, vendedor padrão), API e limites moraram para o ⋮ do rodapé. Itens sem borda, ativo em cinza sólido, espaço em branco no lugar de rótulos de grupo.
+- **Topbar removida.** Título e frase-resumo já abrem cada página; a busca e as preferências estão na sidebar. Uma faixa a menos, 22 px de gap entre blocos, página respira.
+- **⌘K igual à referência.** Painel `#1C1C1C` com cantos de 18 px; campo grande com o `⌘K` à direita; "Estou procurando…" com chips Deals · Contas · Vendedores (× para desligar) e "Mais" que abre as filas; "Últimas buscas" com avatar, nome, subtítulo e contadores à direita (idade, ponto da fila); "Ações rápidas" em quadradinhos com atalho `⌥S/E/C/D`; "Arquivos" com o briefing CSV e o botão Baixar. `?k=1` na URL abre a paleta, para compartilhar e para capturar.
+- **Tabela mais calma.** P(ganhar) virou texto com o triângulo, sem pill; idade em texto simples, pill vermelha só quando passa do ciclo histórico; linhas de 58 px.
+
+**O erro dessa rodada** foi de ferramenta, não de produto: tentei aplicar a CSS nova, um patch e o build num único comando e o shell recusou (`ENAMETOOLONG`). A página ficou um build inteiro com markup novo e estilo velho. Dividir em passos curtos e olhar a captura entre cada um resolveu; fica como lembrete de que "um comando só" não é atalho quando o comando tem 400 linhas.
+
+## 9. O que eu faria com mais tempo
 
 - Gravar as notas e a decisão "confirmar vivo / encerrar" no CRM e recalcular — hoje ficam no navegador.
 - Bot de Slack com as prioridades da segunda-feira: uma chamada à API por vendedor.

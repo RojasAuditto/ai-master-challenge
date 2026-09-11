@@ -20,11 +20,11 @@ O achado que muda a conversa do time: **1.291 dos 1.589 deals Engaging (81%) est
 
 ## Solução
 
-Aplicação escura no vocabulário das referências de produto (Coinstax, Riter, Untitled UI, invoice, Monthly Budget): carvão neutro, bordas a 7% de branco, acento lima, gradiente roxo→azul, botões brancos em pill, Inter. Da marca G4 entra só o logo.
+Aplicação escura no vocabulário das referências de produto (Coinstax, Riter, Untitled UI, invoice, Monthly Budget, paleta de comandos): carvão neutro (`#0A0A0A`), cinzas puros nos cards, bordas a 5–9% de branco, acento lima, gradiente roxo→azul, botões brancos em pill, Inter. Sidebar mínima (cinco destinos + ⋮ com preferências), sem topbar, busca ⌘K com filtros por tipo, últimas buscas, ações rápidas e arquivos. Da marca G4 entra só o logo.
 
 | Rota | Para quem | O que tem |
 |---|---|---|
-| `/` **Segunda-feira** | Vendedor | Persona ("ver como"), frase-resumo com os números, 3 destaques, filas por verbo com indicador deslizante, tabela com score, card de valor esperado com barra em gradiente, atividade recente, exportar briefing em CSV |
+| `/` **Segunda-feira** | Vendedor | Persona ("ver como"), frase-resumo com os números, 3 destaques, filas por verbo com indicador deslizante, tabela com score, card de valor esperado com barra em gradiente, atividade recente, exportar briefing em CSV; `?k=1` abre a busca ⌘K |
 | `/deal/[id]` | Vendedor | Folha do deal: status, vendedor, datas, tags, conta, o que fazer, posição na curva; card do valor esperado; linha do tempo de como o score foi montado; registrar próxima ação |
 | `/equipe` | Gerente / RevOps | Vendedores por valor esperado, composição do pipeline por fila, win rate com IC 95%; filtro por gerente (árvore na sidebar) e escritório |
 | `/metodo` | Quem defende o número | Stepper com os 4 passos do score, card de validação, AUC do que prevê e do que não, limites, API, reprodução |
@@ -41,7 +41,7 @@ solution/003-lead-scorer/
 └── platform/                        # Next.js 15
     ├── app/  page · deal/[id] · equipe · metodo · dados · api/score/[id]
     ├── components/
-    │   ├── layout/   Sidebar (árvore de gerentes, preferências) · Topbar · Cmdk (⌘K)
+    │   ├── layout/   Sidebar (mínima; árvore de gerentes, ⋮ preferências) · Cmdk (⌘K: filtros, recentes, ações, arquivos)
     │   ├── ui/       Icons · Reveal (entrada + contador SSR-first) · Seg (indicador deslizante) · Avatar
     │   ├── charts/   Curva · WinCI · Auc · Ring · Stack — todos animados
     │   ├── pipeline/ Pipeline (home)

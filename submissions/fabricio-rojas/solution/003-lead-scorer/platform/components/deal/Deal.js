@@ -19,7 +19,14 @@ export default function Deal({ d, ctx, curva, explicacao, asof, agenteInfo }) {
   const ta = useRef(null);
   const tomJanela = TOM[d.acao];
 
-  useEffect(() => { try { setNotas((JSON.parse(localStorage.getItem('ls-notas') || '{}')[d.id]) ?? []); } catch { /* sem storage */ } }, [d.id]);
+  useEffect(() => {
+    try {
+      setNotas((JSON.parse(localStorage.getItem('ls-notas') || '{}')[d.id]) ?? []);
+      // Alimenta "Últimas buscas" da paleta ⌘K.
+      const rec = (JSON.parse(localStorage.getItem('ls-recentes') || '[]')).filter((r) => r.id !== d.id);
+      localStorage.setItem('ls-recentes', JSON.stringify([{ id: d.id, t: new Date().toISOString() }, ...rec].slice(0, 6)));
+    } catch { /* sem storage */ }
+  }, [d.id]);
   const salvar = () => {
     const t = txt.trim(); if (!t) return;
     const nova = [{ t: new Date().toISOString(), txt: t }, ...notas]; setNotas(nova); setTxt('');

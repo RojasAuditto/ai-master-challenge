@@ -1,8 +1,7 @@
 import './globals.css';
 import Sidebar from '@/components/layout/Sidebar';
-import Topbar from '@/components/layout/Topbar';
 import Cmdk from '@/components/layout/Cmdk';
-import { scores, gerentes } from '@/lib/data';
+import { scores, gerentes, agentesResumo } from '@/lib/data';
 
 export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover' };
 export const metadata = {
@@ -12,7 +11,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   const s = scores();
-  const busca = s.deals.map((d) => ({ id: d.id, account: d.account, agent: d.agent, product: d.product, acao: d.acao, ev: d.ev }));
+  const busca = s.deals.map((d) => ({ id: d.id, account: d.account, agent: d.agent, product: d.product, acao: d.acao, ev: d.ev, dias: d.dias, p: d.p, ticket: d.ticket, score: d.score }));
   return (
     <html lang="pt-BR">
       <head>
@@ -23,13 +22,10 @@ export default function RootLayout({ children }) {
       <body className="no-js">
         <script dangerouslySetInnerHTML={{ __html: "document.body.classList.remove('no-js');try{if(localStorage.getItem('ls-motion')==='off')document.documentElement.dataset.motion='off'}catch(e){}" }} />
         <div className="shell">
-          <Sidebar badges={{ fechar: s.base.por_acao.fechar.n, decidir: s.base.por_acao.decidir.n, abertos: s.base.abertos }} gerentes={gerentes()} agentes={s.agentes.map((a) => a.agent).sort()} />
-          <main className="main">
-            <Topbar decidir={s.base.por_acao.decidir.n} />
-            {children}
-          </main>
+          <Sidebar gerentes={gerentes()} agentes={s.agentes.map((a) => a.agent).sort()} />
+          <main className="main">{children}</main>
         </div>
-        <Cmdk itens={busca} janelas={s.janelas} />
+        <Cmdk itens={busca} vendedores={agentesResumo()} janelas={s.janelas} cicloMax={s.ciclo_max} />
       </body>
     </html>
   );

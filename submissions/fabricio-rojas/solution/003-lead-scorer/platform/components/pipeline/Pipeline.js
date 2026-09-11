@@ -158,8 +158,8 @@ export default function Pipeline({ deals, agentes, janelas, cicloMax, asof, inic
                     <tr key={d.id} className="row" style={{ '--i': Math.min(i, 12) }} onClick={() => router.push(`/deal/${d.id}`)}>
                       <td className="idx">{i + 1}</td>
                       <td><div className="asset"><Avatar nome={d.account ?? d.id} size={30} /><div style={{ minWidth: 0 }}><div className="nm" style={{ color: d.account ? 'var(--t1)' : 'var(--t3)' }}>{d.account ?? 'Conta não atribuída'}</div><div className="tk">{d.product} · {usd(d.ticket)}{!agente ? ` · ${d.agent}` : ''}</div></div></div></td>
-                      <td className="n"><span className={`pill ${d.p >= 0.7 ? 'green' : 'blue'}`}><i className="tri up" />{num(d.p * 100, 0)}%</span></td>
-                      <td className="n">{d.dias != null ? <span className={`pill ${d.flags.includes('fora_do_historico') ? 'red' : 'line'}`}>{d.dias}d</span> : <span className="pill line">—</span>}</td>
+                      <td className="n"><span className="delta" style={{ color: d.p >= 0.7 ? 'var(--green)' : 'var(--t2)' }}><i className="tri" />{num(d.p * 100, 0)}%</span></td>
+                      <td className="n">{d.dias != null ? (d.flags.includes('fora_do_historico') ? <span className="pill red">{d.dias}d</span> : <span style={{ color: 'var(--t2)' }}>{d.dias}d</span>) : <span style={{ color: 'var(--t3)' }}>—</span>}</td>
                       <td className="n" style={{ color: 'var(--t1)', fontWeight: 600 }}>{usd(d.ev)}</td>
                       <td className="n"><span className="score"><span className="tr"><i style={{ width: `${d.score}%` }} /></span><b>{d.score}</b></span></td>
                     </tr>
