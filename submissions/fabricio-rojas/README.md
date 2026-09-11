@@ -3,7 +3,8 @@
 ## Sobre mim
 
 - **Nome:** Fabrício Rojas
-- **LinkedIn:** _(preencher)_
+- **LinkedIn:** [linkedin.com/in/fabricio-silva-rojas](https://www.linkedin.com/in/fabricio-silva-rojas/)
+- **Portfólio:** [rojascode.com](https://rojascode.com)
 - **Challenges escolhidos:** 001 — Diagnóstico de Churn · 003 — Lead Scorer
 
 ---
