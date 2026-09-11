@@ -57,7 +57,7 @@ submissions/fabricio-rojas/
 ### Como rodar
 
 ```bash
-cd solution/analysis && node build-db.mjs && node findings.mjs
+cd analysis && node build-db.mjs && node findings.mjs
 cd ../platform && npm install && npm run dev
 # abre em http://localhost:3000
 ```
@@ -105,7 +105,7 @@ Antes de afirmar qualquer causa, testei se havia sinal. Usei testes de permutaç
 
 ## Process Log — Como usei IA
 
-> Detalhado em [`process-log/README.md`](./process-log/README.md), com o registro dos erros e correções.
+> Detalhado em [`process-log/README.md`](../../process-log/001-churn/README.md), com o registro dos erros e correções.
 
 ### Ferramentas usadas
 
@@ -148,8 +148,8 @@ Cinco erros reais, todos registrados no log com o momento em que apareceram:
 
 ## Evidências
 
-- [x] **Narrativa escrita** do processo — [`process-log/README.md`](./process-log/README.md), passo a passo com os erros e as correções
-- [x] **Screenshots** da aplicação em cada estágio — [`process-log/screenshots/`](./process-log/screenshots/), incluindo o antes e depois do gráfico que contradizia a própria conclusão
+- [x] **Narrativa escrita** do processo — [`process-log/README.md`](../../process-log/001-churn/README.md), passo a passo com os erros e as correções
+- [x] **Screenshots** da aplicação em cada estágio — [`process-log/screenshots/`](../../process-log/001-churn/screenshots/), incluindo o antes e depois do gráfico que contradizia a própria conclusão
 - [x] **Git history** — quatro commits mostrando a evolução: primeira entrega → resposta primeiro → diferenciais do brief → ajustes de acabamento
 - [x] **Código comentado** — os comentários em `stats.mjs`, `findings.mjs` e `Charts.js` registram as decisões no ponto em que foram tomadas
 - [ ] Screen recording — não gravei; a narrativa e os screenshots cobrem o mesmo terreno

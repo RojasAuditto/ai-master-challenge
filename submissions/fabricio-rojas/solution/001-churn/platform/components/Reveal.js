@@ -55,10 +55,13 @@ const FORMATOS = {
 export function Contador({ para, duracao = 900, formato = 'int', atraso = 0 }) {
   const formata = FORMATOS[formato] ?? FORMATOS.int;
   const [ref, on] = useInView();
-  const [v, setV] = useState(0);
+  // Começa no valor final: o HTML do servidor já traz o número certo. Com JS e
+  // movimento permitido, recua a zero e sobe — se nada disso rodar, ninguém vê "0".
+  const [v, setV] = useState(para);
+  useEffect(() => { setV(para); }, [para]);
   useEffect(() => {
     if (!on) return;
-    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return setV(para);
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
     let raf, t0;
     const tick = (t) => {
       if (!t0) t0 = t;
@@ -66,6 +69,7 @@ export function Contador({ para, duracao = 900, formato = 'int', atraso = 0 }) {
       if (p >= 0) setV(para * (1 - Math.pow(1 - p, 3)));
       if (p < 1) raf = requestAnimationFrame(tick);
     };
+    setV(0);
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [on, para, duracao, atraso]);

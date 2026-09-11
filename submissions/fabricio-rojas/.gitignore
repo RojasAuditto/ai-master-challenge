@@ -1,7 +1,10 @@
 node_modules/
 .next/
 *.log
-# Gerados por solution/analysis/build-db.mjs a partir de solution/data/raw — não versionados.
-solution/data/ravenstack.db
-solution/data/ravenstack.db-shm
-solution/data/ravenstack.db-wal
+# Bancos gerados por solution/*/analysis/build-db.mjs a partir de data/raw — não versionados.
+solution/001-churn/data/ravenstack.db
+solution/001-churn/data/ravenstack.db-shm
+solution/001-churn/data/ravenstack.db-wal
+solution/003-lead-scorer/data/crm.db
+solution/003-lead-scorer/data/crm.db-shm
+solution/003-lead-scorer/data/crm.db-wal
