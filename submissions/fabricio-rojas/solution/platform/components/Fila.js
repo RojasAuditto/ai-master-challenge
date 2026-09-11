@@ -76,7 +76,7 @@ export default function Fila({ contas, coorteNova }) {
           </div>
         </div>
         <div className="tw" style={{ border: 0, borderRadius: 0 }}>
-          <table>
+          <table className="fila-tabela">
             <thead>
               <tr><th>Conta</th><th>Setor</th><th className="n">Casa (meses)</th><th className="n">MRR</th><th className="n">Risco/mês</th><th className="n">ARR em risco</th><th aria-label="Abrir" /></tr>
             </thead>
@@ -119,6 +119,7 @@ function Linha({ c, aberta, toggle }) {
                 <div style={{ fontSize: 10.5, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--gold-ink)', fontWeight: 800, marginBottom: 8 }}>Por que está na fila</div>
                 <ul style={{ margin: 0, paddingLeft: 16, fontSize: 12.5, lineHeight: 1.65, color: 'var(--ink-2)' }}>{c.motivos.map((m, i) => <li key={i}>{m}</li>)}</ul>
                 <dl className="kv" style={{ marginTop: 12 }}>
+                  <dt>Setor</dt><dd>{c.industry} · {c.country}</dd>
                   <dt>Tickets</dt><dd>{c.tickets}</dd>
                   <dt>CSAT</dt><dd>{c.csat ? num(c.csat) : 'sem nota'}</dd>
                   <dt>Uso acumulado</dt><dd>{int(c.usos)}</dd>

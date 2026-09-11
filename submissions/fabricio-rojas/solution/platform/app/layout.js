@@ -2,6 +2,9 @@ import './globals.css';
 import Sidebar from '@/components/Sidebar';
 import { filaCompleta } from '@/lib/data';
 
+// O Next já injeta um viewport padrão; declarar aqui evita a meta duplicada.
+export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover' };
+
 export const metadata = {
   title: 'RavenStack — Diagnóstico de Churn | G4 AI Master',
   description: 'Diagnóstico de causa raiz do churn da RavenStack: resposta primeiro, prova sob demanda, ferramentas para o CS.',

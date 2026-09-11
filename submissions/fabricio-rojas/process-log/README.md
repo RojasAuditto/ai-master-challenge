@@ -156,6 +156,20 @@ A revisão visual foi feita com screenshots em headless Edge, lidos e corrigidos
 
 ---
 
+### 12. Mobile, e a armadilha de medir com a ferramenta errada
+
+Fiz o responsivo por último, com uma regra: não tocar em nada acima de 980px. Todo o mobile vive dentro de duas media queries, e os elementos exclusivos de mobile (barra superior, véu, botão de fechar) nascem com `display: none` — assim o desktop não pode regredir por acidente.
+
+A sidebar vira gaveta sobreposta, com véu, trava de rolagem do fundo, fechamento por Esc, por toque no véu e ao navegar. Gráficos densos ganham rolagem lateral em vez de encolher a fonte para 5px. A tabela da fila mantém a primeira coluna fixa enquanto o resto rola, e o setor sai da grade para dentro do detalhe da linha.
+
+**A parte que quase me enganou.** Meus primeiros screenshots a 390px mostravam a página vazando para a direita, texto cortado em toda tela. Passei uma rodada inteira "consertando" overflow. Quando finalmente medi em vez de olhar — injetando um componente temporário que reportava `clientWidth`, `scrollWidth` e cada elemento mais largo que a viewport — o resultado foi `VW=481 SCROLLW=481`.
+
+Ou seja: **não havia overflow nenhum**. O headless desta máquina tem largura mínima de janela por causa da escala de DPI do Windows; ele renderizava a 481px e recortava a captura em 390. Eu estava depurando o instrumento, não o produto.
+
+A solução foi renderizar o app dentro de um iframe de 360px e fotografar a página que o contém — o iframe estabelece uma viewport real, e as media queries dentro dele respondem à largura dele. A 360px e a 414px, `scrollWidth == clientWidth` nas seis rotas.
+
+Fica a lição, que vale além do CSS: quando a medição e a observação discordam, a primeira suspeita é o instrumento. O `min-width: 0` que eu tinha adicionado "para corrigir o overflow" continua no código — não porque resolveu o bug imaginário, mas porque item de flex/grid realmente não encolhe abaixo do conteúdo, e sem ele o gráfico de 520px arrastaria a página numa tela estreita de verdade.
+
 ## O que eu faria com mais tempo
 
 - Cruzar a deterioração com datas de release do produto, se existissem. É a lacuna que impede fechar a causa raiz.

@@ -133,6 +133,8 @@ h1, h2, h3, p { margin: 0; }
 .sb-user .u span { font-size: 11px; color: #8ea2b3; white-space: nowrap; }
 .sb[data-min='true'] .sb-user { justify-content: center; padding: 8px 0; }
 
+.sb-so-mobile, .mtop, .sb-veu { display: none; }
+
 /* ── Topbar ────────────────────────────────────────────────── */
 
 .top { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding: 4px 0 6px; }
@@ -301,9 +303,117 @@ tbody tr.click:hover td { background: var(--surface-2); }
   * { animation-duration: .001s !important; transition-duration: .001s !important; }
 }
 @media (max-width: 980px) {
-  .g-2, .g-3, .g-4, .g-21, .g-12, .g-32 { grid-template-columns: 1fr; }
-  .shell { flex-direction: column; }
-  .sb, .sb[data-min='true'] { width: 100%; flex: none; height: auto; position: static; padding: 12px 14px; }
-  .sb-foot { display: none; }
-  .page { padding: 16px 16px 60px; }
+  /* ── Casca: sidebar vira gaveta sobreposta ───────────────── */
+  .shell { display: block; }
+  .sb-so-desktop { display: none; }
+  .sb-so-mobile { display: grid; }
+
+  .mtop {
+    display: flex; align-items: center; gap: 12px;
+    position: sticky; top: 0; z-index: 40;
+    background: var(--navy); color: #fff;
+    padding: 10px 14px; min-height: 54px;
+  }
+  .mtop img { width: 46px; height: auto; display: block; flex: none; }
+  .mtop-t {
+    font-size: 13px; font-weight: 700; color: #fff; min-width: 0;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    padding-left: 12px; margin-left: 2px; border-left: 1px solid rgba(255,255,255,.15);
+  }
+  .mtop-btn {
+    width: 36px; height: 36px; flex: none; border-radius: 10px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.06); color: #fff;
+    display: grid; place-items: center;
+  }
+
+  .sb-veu {
+    display: block; position: fixed; inset: 0; z-index: 49;
+    background: rgba(0, 31, 53, .55); opacity: 0; pointer-events: none;
+    transition: opacity .22s ease;
+  }
+  .sb-veu[data-on='true'] { opacity: 1; pointer-events: auto; }
+
+  .sb, .sb[data-min='true'] {
+    position: fixed; top: 0; left: 0; bottom: 0; z-index: 50;
+    width: min(290px, 86vw); flex-basis: auto; height: 100dvh;
+    padding: 16px 14px 14px; gap: 16px;
+    transform: translateX(-102%); transition: transform .24s ease;
+    box-shadow: 0 0 40px rgba(0, 31, 53, .3); overflow-y: auto;
+  }
+  .sb[data-gaveta='true'] { transform: none; }
+  /* No mobile a gaveta é sempre a versão completa, nunca o trilho de ícones. */
+  .sb[data-min='true'] .sb-top { flex-direction: row; }
+  .sb[data-min='true'] .sb-brand img { width: 64px; height: auto; object-fit: initial; }
+  .sb[data-min='true'] .sb-label, .sb[data-min='true'] .sb-item .txt,
+  .sb[data-min='true'] .badge, .sb[data-min='true'] .sb-brand .t,
+  .sb[data-min='true'] .sb-user .u { display: revert; }
+  .sb[data-min='true'] .sb-brand .t b { display: block; }
+  .sb[data-min='true'] .sb-item { justify-content: flex-start; padding: 9px 10px; }
+  .sb[data-min='true'] .sb-user { justify-content: flex-start; padding: 9px 10px; }
+  .sb-item { padding: 11px 10px; font-size: 13.5px; }
+  .sb-foot { display: flex; }
+
+  .page { max-width: none; padding: 14px 14px 56px; gap: 12px; }
+
+  /* ── Grades ───────────────────────────────────────────────── */
+  .g-2, .g-21, .g-12, .g-32, .g-3 { grid-template-columns: 1fr; }
+  .g-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid { gap: 10px; }
+
+  /* ── Cartões e tipografia ─────────────────────────────────── */
+  .card { padding: 16px; border-radius: 16px; }
+  .card.tight { padding: 14px; }
+  .kpi .big { font-size: 27px; }
+  .kpi .big small { font-size: 12px; }
+  .verdict { gap: 13px; }
+  .verdict h1 { font-size: 23px; }
+  .verdict p { font-size: 13px; }
+  .verdict .ft { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .lead { font-size: 13.5px; }
+  .card-h { margin-bottom: 12px; }
+
+  /* ── Topbar da página ─────────────────────────────────────── */
+  .top { padding: 0 0 2px; gap: 8px; }
+  .crumb { font-size: 12px; }
+  .crumb b { font-size: 14px; }
+  .top-r { gap: 6px; }
+
+  /* ── Gráficos: rolagem lateral para não virar 5px de fonte ──
+     Item de flex/grid tem min-width:auto e não encolhe abaixo do conteúdo.
+     Sem o min-width:0 abaixo, o SVG de 540px arrasta a página inteira. */
+  .page, .page > *, .grid > *, .rise, .card, .acc-b, .tw { min-width: 0; }
+  .page svg[role='img'] { min-width: 520px; overflow: visible; }
+  .card > svg[role='img'], .card > div > svg[role='img'],
+  .acc-b > svg[role='img'], .acc-b > div > svg[role='img'] { display: block; }
+  .card, .acc-b { overflow-x: auto; }
+  /* Rede de segurança: nada faz a página inteira rolar de lado. */
+  html, body { overflow-x: hidden; max-width: 100%; }
+  .seg { width: 100%; overflow-x: auto; }
+  .seg button { flex: none; }
+
+  /* ── Tabelas: 1ª coluna fixa enquanto o resto rola ────────── */
+  .tw { -webkit-overflow-scrolling: touch; }
+  table { min-width: 620px; }
+  th:first-child, td:first-child {
+    position: sticky; left: 0; z-index: 1; background: var(--surface);
+    box-shadow: 1px 0 0 var(--line);
+  }
+  th:first-child { background: var(--surface-2); }
+  tbody tr:hover td:first-child { background: var(--surface-2); }
+
+  /* ── Formulário da calculadora ────────────────────────────── */
+  .in input, .in select { font-size: 16px; } /* < 16px faz o iOS dar zoom ao focar */
+}
+
+@media (max-width: 560px) {
+  .g-4 { grid-template-columns: repeat(2, 1fr); }
+  .page { padding: 12px 12px 48px; }
+  .card { padding: 14px; }
+  .kpi .big { font-size: 24px; }
+  .verdict h1 { font-size: 21px; }
+  .chip { font-size: 11px; padding: 4px 9px; }
+  .btn { padding: 7px 11px; font-size: 12px; }
+  /* A tabela da fila é densa demais para caber: o setor vira detalhe da linha aberta. */
+  .fila-tabela th:nth-child(2), .fila-tabela td:nth-child(2) { display: none; }
+  .fila-tabela { min-width: 520px; }
 }

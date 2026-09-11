@@ -36,7 +36,7 @@ O deliverable é uma aplicação web com sidebar escura no navy da marca e conte
 | Pedido no challenge | Onde está | Observação |
 |---|---|---|
 | **Modelo preditivo que funcione** | `/modelo` | Data de entrada + idade da conta: AUC **0,72** para churn em 90 dias. A melhor variável comportamental dá 0,42 — moeda ao ar. O modelo funciona justamente porque *não* usa comportamento. |
-| **Dashboard / visualização interativa** | todas as rotas | Hover com tooltip em cada gráfico, troca de horizonte (90d / 6m / 12m) no gráfico central, animação de entrada, sidebar retrátil. |
+| **Dashboard / visualização interativa** | todas as rotas | Hover com tooltip em cada gráfico, troca de horizonte (90d / 6m / 12m) no gráfico central, animação de entrada, sidebar retrátil. Responsivo até 360px: sidebar vira gaveta, gráficos ganham rolagem lateral, tabela com primeira coluna fixa. |
 | **Automação que o CS usa amanhã** | `/fila` | Fila ordenada por exposição, com roteiro de abordagem por conta e exportação CSV. Sem etapa manual entre o dado e a ligação. |
 | **Análise que ninguém pediu** | `/dados` | O `reason_code` — a fonte de toda conversa sobre "por que saem" — é estatisticamente independente do que o cliente escreveu (p=0,957). Muda a conversa sobre roadmap. |
 
@@ -57,7 +57,7 @@ submissions/fabricio-rojas/
 ### Como rodar
 
 ```bash
-cd analysis && node build-db.mjs && node findings.mjs
+cd solution/analysis && node build-db.mjs && node findings.mjs
 cd ../platform && npm install && npm run dev
 # abre em http://localhost:3000
 ```
@@ -115,6 +115,17 @@ Antes de afirmar qualquer causa, testei se havia sinal. Usei testes de permutaç
 | Headless Edge | Screenshots da própria aplicação, lidos em ciclo para revisar o design |
 | SQLite (`node:sqlite`) | Cruzamento das 5 tabelas |
 
+### Workflow
+
+1. **Marca antes de dado.** Extraí a paleta e o logo do G4 direto do SVG oficial do site, antes de abrir os CSVs.
+2. **Integridade antes de análise.** A primeira query cruzou `churn_flag` com `churn_events` e achou 312 contas contraditórias. Isso reorientou tudo: passei a rodar cada teste contra duas definições de churn.
+3. **Verificar as três afirmações do CEO** separadamente, em vez de assumir que uma estava errada. As três se confirmaram — o que descartou a leitura fácil.
+4. **Testar antes de afirmar.** Cada segmento que "parecia" um achado foi a teste de permutação. DevTools 31% vs Cybersecurity 16% morreu em p=0,067.
+5. **Coorte com censura correta** — aqui saiu o achado central, depois de eu errar a primeira versão.
+6. **Medir o poder preditivo por AUC**, para separar o que prevê (data de entrada, 0,72) do que não prevê (comportamento, 0,42).
+7. **Construir por audiência**, não por ordem de raciocínio: uma rota por leitor.
+8. **Revisar por screenshot** em ciclo, lendo o resultado renderizado em vez de confiar no dado.
+
 ### Onde a IA errou e como corrigi
 
 Cinco erros reais, todos registrados no log com o momento em que apareceram:
@@ -132,6 +143,20 @@ Cinco erros reais, todos registrados no log com o momento em que apareceram:
 **Tratar o resultado nulo como achado, não como fracasso.** Quando 36 testes dão zero significativos, o caminho fácil é ignorar e escrever uma narrativa causal mesmo assim. A leitura correta é o oposto: a ausência de sinal individual, combinada com a enorme significância por safra, é justamente o que prova que a causa é sistêmica. Esse raciocínio é o que muda a recomendação de "monte um modelo de risco" para "conserte o onboarding".
 
 **Recusar o deliverable esperado.** O challenge sugere modelo preditivo como diferencial. Construir um aqui produziria um número com aparência de precisão e conteúdo de acaso. Não entregar — e justificar — vale mais que entregar.
+
+---
+
+## Evidências
+
+- [x] **Narrativa escrita** do processo — [`process-log/README.md`](./process-log/README.md), passo a passo com os erros e as correções
+- [x] **Screenshots** da aplicação em cada estágio — [`process-log/screenshots/`](./process-log/screenshots/), incluindo o antes e depois do gráfico que contradizia a própria conclusão
+- [x] **Git history** — quatro commits mostrando a evolução: primeira entrega → resposta primeiro → diferenciais do brief → ajustes de acabamento
+- [x] **Código comentado** — os comentários em `stats.mjs`, `findings.mjs` e `Charts.js` registram as decisões no ponto em que foram tomadas
+- [ ] Screen recording — não gravei; a narrativa e os screenshots cobrem o mesmo terreno
+
+---
+
+_Submissão enviada em: 10/09/2026_
 
 ---
 
