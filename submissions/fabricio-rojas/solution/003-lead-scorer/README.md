@@ -167,6 +167,6 @@ Recusar o modelo que o brief sugere depois de provar que não há sinal para ele
 
 ---
 
-_Submissão enviada em: 10/09/2026_
+_Submissão enviada em: 11/09/2026_
 
 _Dataset: [CRM Sales Predictive Analytics](https://www.kaggle.com/datasets/agungpambudi/crm-sales-predictive-analytics) (licença CC0)._
