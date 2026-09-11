@@ -15,9 +15,9 @@ const MES = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out
 const quando = (iso) => { const m = (Date.now() - new Date(iso)) / 60000; if (m < 60) return `há ${Math.max(1, Math.round(m))} min`; if (m < 1440) return `há ${Math.round(m / 60)} h`; return `há ${Math.round(m / 1440)} d`; };
 const lerNotas = () => { try { return JSON.parse(localStorage.getItem('ls-notas') || '{}'); } catch { return {}; } };
 
-function GBar({ pct, lime = false }) {
+function GBar({ pct, accent = false }) {
   const [ref, on] = useInView();
-  return <div ref={ref} className="gbar"><i className={lime ? 'lime' : ''} style={{ width: on ? `${Math.min(100, pct)}%` : 0 }} /></div>;
+  return <div ref={ref} className="gbar"><i className={accent ? 'accent' : ''} style={{ width: on ? `${Math.min(100, pct)}%` : 0 }} /></div>;
 }
 
 export default function Pipeline({ deals, agentes, janelas, cicloMax, asof, inicial = {}, totalAbertos }) {
@@ -189,7 +189,7 @@ export default function Pipeline({ deals, agentes, janelas, cicloMax, asof, inic
                   {ORDEM.map((k) => (
                     <div key={k}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: 'var(--t2)', marginBottom: 6 }}><span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}><i style={{ width: 7, height: 7, borderRadius: '50%', background: CORES_FILA[k], display: 'inline-block' }} />{janelas[k].rotulo} · {porAcao[k].length}</span><b style={{ color: 'var(--t1)' }}>{usdK(porAcao[k].reduce((s, d) => s + d.ev, 0))}</b></div>
-                      <GBar pct={kEv ? (100 * porAcao[k].reduce((s, d) => s + d.ev, 0)) / kEv : 0} lime />
+                      <GBar pct={kEv ? (100 * porAcao[k].reduce((s, d) => s + d.ev, 0)) / kEv : 0} accent />
                     </div>
                   ))}
                 </div>

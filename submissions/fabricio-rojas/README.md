@@ -82,6 +82,7 @@ Desconfiar do achado pronto e testá-lo; tratar o resultado nulo como achado que
 - [x] Screenshots — em cada `process-log/<challenge>/screenshots/`
 - [x] Git history — branch `submission/fabricio-rojas`
 - [x] Código comentado — decisões registradas no ponto em que são tomadas
+- [x] Reprodução verificada — bancos apagados e análises refeitas do zero nos dois challenges; JSON gerado idêntico ao versionado
 
 ---
 

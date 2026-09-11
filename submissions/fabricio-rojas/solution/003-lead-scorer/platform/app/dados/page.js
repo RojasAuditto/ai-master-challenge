@@ -60,7 +60,7 @@ export default function Dados() {
             <div className="tl" style={{ marginTop: 10 }}>
               <div className="tl-i"><span className="tl-ic red"><Alert size={14} /></span><span className="tl-tx"><b>{int(semConta.n)} deals abertos sem conta</b><span>Nenhum deal sem conta jamais foi fechado. Ou a conta é preenchida só no fechamento, ou esses deals nunca foram trabalhados. Nos dois casos, a primeira ação é atribuir a conta no CRM.</span></span></div>
               <div className="tl-i"><span className="tl-ic red"><Alert size={14} /></span><span className="tl-tx"><b>{int(zumbis.n)} deals além do ciclo máximo histórico</b><span>Nenhum deal na história fechou depois de {s.ciclo_max} dias. Estes estão há mais tempo que isso em Engaging. O pipeline carrega deals mortos sem baixa — e o número do time está inflado.</span></span></div>
-              <div className="tl-i"><span className="tl-ic green"><ArrowUR size={14} /></span><span className="tl-tx"><b>O que fazer com isso</b><span>A fila <Link href="/?agente=&fila=decidir" style={{ color: 'var(--lime)' }}>Decidir</Link> lista os {int(zumbis.n)} para confirmar ou encerrar; a flag "sem conta" aparece em cada deal e na composição por vendedor em Equipe.</span></span></div>
+              <div className="tl-i"><span className="tl-ic green"><ArrowUR size={14} /></span><span className="tl-tx"><b>O que fazer com isso</b><span>A fila <Link href="/?agente=&fila=decidir" style={{ color: 'var(--accent)' }}>Decidir</Link> lista os {int(zumbis.n)} para confirmar ou encerrar; a flag "sem conta" aparece em cada deal e na composição por vendedor em Equipe.</span></span></div>
             </div>
           </div>
         </Rise>

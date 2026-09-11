@@ -31,7 +31,7 @@ export function acaoSugerida(d, { ciclo_max }) {
 export const FLAGS = {
   sem_conta: { label: 'sem conta', tom: 'red', desc: 'Deal sem conta no CRM: sem setor, porte nem histórico. Nenhum deal sem conta jamais foi fechado.' },
   fora_do_historico: { label: 'além do ciclo', tom: 'amber', desc: 'Mais tempo em Engaging do que qualquer deal já fechado. Provavelmente morto sem baixa.' },
-  conta_quente: { label: 'conta quente', tom: 'lime', desc: 'Conta com histórico forte de compra conosco.' },
+  conta_quente: { label: 'conta quente', tom: 'accent', desc: 'Conta com histórico forte de compra conosco.' },
   produto_renomeado: { label: 'produto normalizado', tom: 'blue', desc: 'Veio como "GTXPro" no CRM; tratado como GTX Pro.' },
 };
 

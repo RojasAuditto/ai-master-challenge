@@ -170,6 +170,10 @@ A solução foi renderizar o app dentro de um iframe de 360px e fotografar a pá
 
 Fica a lição, que vale além do CSS: quando a medição e a observação discordam, a primeira suspeita é o instrumento. O `min-width: 0` que eu tinha adicionado "para corrigir o overflow" continua no código — não porque resolveu o bug imaginário, mas porque item de flex/grid realmente não encolhe abaixo do conteúdo, e sem ele o gráfico de 520px arrastaria a página numa tela estreita de verdade.
 
+## Verificação final: rodar do zero
+
+Antes de fechar a submissão, apaguei o `.db` e refiz o caminho que está no README — `node build-db.mjs && node findings.mjs` — comparando o `findings.json` gerado com o versionado. Saíram idênticos, fora o carimbo de data. É o teste que importa para um avaliador: as instruções de setup reproduzem exatamente os números do relatório, sem estado escondido na minha máquina. O mesmo vale para o challenge 003.
+
 ## O que eu faria com mais tempo
 
 - Cruzar a deterioração com datas de release do produto, se existissem. É a lacuna que impede fechar a causa raiz.

@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { num } from '@/lib/fmt';
 import { useInView } from '@/components/ui/Reveal';
 
-const LIME = '#c9f55b', LIME2 = '#8af2a2', T1 = '#f4f4f5', T3 = '#6e6e78', LINE = 'rgba(255,255,255,.08)';
-const GREEN = '#4ade80', RED = '#f26d6d', BLUE = '#5b9cff', PURPLE = '#8b5cf6', TIP = '#1e2129';
+const LIME = '#d4d4d4', LIME2 = '#a3a3a3', T1 = '#f2f2f2', T3 = '#6b6b6b', LINE = 'rgba(255,255,255,.08)'; // LIME = cor de acento (hoje cinza claro)
+const GREEN = '#4ade80', RED = '#f26d6d', BLUE = '#6ea8ff', PURPLE = '#a78bfa', TIP = '#202020';
 const EASE = 'cubic-bezier(.22,1,.36,1)';
 const d = (pts) => pts.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(' ');
 const len = (pts) => pts.reduce((s, p, i) => (i ? s + Math.hypot(p[0] - pts[i - 1][0], p[1] - pts[i - 1][1]) : 0), 0);
@@ -32,7 +32,7 @@ export function Curva({ curva, cicloMax, marcador, imediato = false, alt = 240 }
   return (
     <svg ref={ref} viewBox={`0 0 ${W} ${H}`} width="100%" role="img" onMouseLeave={() => setHov(null)}
       aria-label={`Probabilidade de ganhar dado que o deal ainda está aberto: ${curva.map((c) => `dia ${c.ini}: ${num(c.p * 100, 0)}%`).join(', ')}.`}>
-      <defs><linearGradient id="gl" x1="0" x2="1"><stop offset="0" stopColor="#b6ff5c" /><stop offset="1" stopColor="#8af5a0" /></linearGradient>
+      <defs><linearGradient id="gl" x1="0" x2="1"><stop offset="0" stopColor="#f0f0f0" /><stop offset="1" stopColor="#a8a8a8" /></linearGradient>
         <linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={LIME} stopOpacity=".22" /><stop offset="1" stopColor={LIME} stopOpacity="0" /></linearGradient></defs>
       {[0.45, 0.55, 0.65, 0.75, 0.85].map((v) => <g key={v}><line x1={P.l} x2={W - P.r} y1={y(v)} y2={y(v)} stroke={LINE} strokeDasharray="3 5" /><text x={P.l - 8} y={y(v) + 3.5} fontSize="10" fill={T3} textAnchor="end">{num(v * 100, 0)}%</text></g>)}
       <path d={`${d(pts)} L${pts[pts.length - 1][0]} ${y(0.4)} L${pts[0][0]} ${y(0.4)} Z`} fill="url(#ga)" opacity={on ? 1 : 0} style={{ transition: 'opacity .9s ease .5s' }} />
@@ -40,7 +40,7 @@ export function Curva({ curva, cicloMax, marcador, imediato = false, alt = 240 }
       {curva.map((c, i) => (
         <g key={c.ini} onMouseEnter={() => setHov(c)} opacity={on ? 1 : 0} style={{ transition: `opacity .3s ease ${450 + i * 140}ms` }}>
           <rect x={x(c.ini)} y={P.t} width={x(Math.min(c.fim + 1, cicloMax)) - x(c.ini)} height={H - P.t - P.b} fill="transparent" />
-          <circle cx={x(c.ini)} cy={y(c.p)} r={hov === c ? 6 : 4.5} fill={LIME} stroke="#0b0d11" strokeWidth="2.5" />
+          <circle cx={x(c.ini)} cy={y(c.p)} r={hov === c ? 6 : 4.5} fill={LIME} stroke="#131313" strokeWidth="2.5" />
           <text x={x(c.ini) + 8} y={y(c.p) - 10} fontSize="11" fill={LIME} fontWeight="700">{num(c.p * 100, 0)}%</text>
         </g>
       ))}
@@ -99,7 +99,7 @@ export function Auc({ itens }) {
         const cor = it.usado ? 'url(#gl2)' : Math.abs(it.auc - 0.5) < 0.03 ? '#2b2e37' : BLUE;
         return (
           <g key={it.fator}>
-            <defs><linearGradient id="gl2" x1="0" x2="1"><stop offset="0" stopColor="#b6ff5c" /><stop offset="1" stopColor="#8af5a0" /></linearGradient></defs>
+            <defs><linearGradient id="gl2" x1="0" x2="1"><stop offset="0" stopColor="#f0f0f0" /><stop offset="1" stopColor="#a8a8a8" /></linearGradient></defs>
             <text x={P.l - 12} y={cy + 4} fontSize="11.5" fill={it.usado ? T1 : '#a1a1aa'} textAnchor="end" fontWeight={it.usado ? 700 : 500}>{it.fator}</text>
             <rect x={on ? x0 : x(0.5)} y={cy - 9} height={18} rx="6" fill={cor} width={on ? w : 0} style={{ transition: `width .9s ${EASE} ${i * 70}ms, x .9s ${EASE} ${i * 70}ms` }} />
             <text x={x(it.auc) + (it.auc >= 0.5 ? 9 : -9)} y={cy + 4} fontSize="11.5" fill={it.usado ? LIME : T3} fontWeight="700" textAnchor={it.auc >= 0.5 ? 'start' : 'end'} opacity={on ? 1 : 0} style={{ transition: `opacity .4s ease ${i * 70 + 500}ms` }}>{num(it.auc, 2)}</text>
@@ -116,7 +116,7 @@ export function Ring({ v, size = 56, stroke = 5 }) {
   const r = (size - stroke) / 2, c = 2 * Math.PI * r, id = `rg${size}`;
   return (
     <svg ref={ref} width={size} height={size} viewBox={`0 0 ${size} ${size}`} role="img" aria-label={`Score ${v} de 100`}>
-      <defs><linearGradient id={id} x1="0" x2="1"><stop offset="0" stopColor="#b6ff5c" /><stop offset="1" stopColor="#8af5a0" /></linearGradient></defs>
+      <defs><linearGradient id={id} x1="0" x2="1"><stop offset="0" stopColor="#f0f0f0" /><stop offset="1" stopColor="#a8a8a8" /></linearGradient></defs>
       <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(255,255,255,.08)" strokeWidth={stroke} />
       <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={`url(#${id})`} strokeWidth={stroke} strokeLinecap="round" strokeDasharray={c} strokeDashoffset={on ? c * (1 - v / 100) : c} transform={`rotate(-90 ${size / 2} ${size / 2})`} style={{ transition: `stroke-dashoffset 1.1s ${EASE}` }} />
       <text x="50%" y="50%" dy="4.5" textAnchor="middle" fontSize={size * 0.3} fontWeight="700" fill={T1}>{v}</text>
@@ -134,4 +134,4 @@ export function Stack({ partes, total, alt = 8 }) {
   );
 }
 
-export const CORES_FILA = { fechar: GREEN, acompanhar: BLUE, decidir: RED, engajar: '#b79cff' };
+export const CORES_FILA = { fechar: GREEN, acompanhar: BLUE, decidir: RED, engajar: '#a78bfa' };

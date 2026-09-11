@@ -20,7 +20,7 @@ O achado que muda a conversa do time: **1.291 dos 1.589 deals Engaging (81%) est
 
 ## Solução
 
-Aplicação escura no vocabulário das referências de produto (Coinstax, Riter, Untitled UI, invoice, Monthly Budget, paleta de comandos): carvão neutro (`#0A0A0A`), cinzas puros nos cards, bordas a 5–9% de branco, acento lima, gradiente roxo→azul, botões brancos em pill, Inter. Sidebar mínima (cinco destinos + ⋮ com preferências), sem topbar, busca ⌘K com filtros por tipo, últimas buscas, ações rápidas e arquivos. Da marca G4 entra só o logo.
+Aplicação escura no vocabulário das referências de produto (Coinstax, Riter, Untitled UI, invoice, Monthly Budget, paleta de comandos): carvão neutro (`#0A0A0A`), cinzas puros nos cards, bordas a 5–9% de branco, acento em cinza claro, gradiente roxo→azul no card de valor esperado, botões brancos em pill, Inter. Cor saturada só onde é informação: as quatro filas, a variação e os alertas. Sidebar mínima (cinco destinos + ⋮ com preferências), sem topbar, busca ⌘K com filtros por tipo, últimas buscas, ações rápidas e arquivos. Da marca G4 entra só o logo, aplicado inteiro e sem recolorir.
 
 | Rota | Para quem | O que tem |
 |---|---|---|

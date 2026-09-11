@@ -9,7 +9,7 @@ import { ArrowL, ArrowR, Copy, Check, Code, Send, Target, User, Calendar, Tag, B
 
 const dataBR = (iso) => (iso ? iso.split('-').reverse().join('/') : '—');
 const quando = (iso) => { const m = (Date.now() - new Date(iso)) / 60000; if (m < 60) return `há ${Math.max(1, Math.round(m))} min`; if (m < 1440) return `há ${Math.round(m / 60)} h`; return `há ${Math.round(m / 1440)} d`; };
-const ICONE = { ticket: [Zap, 'lime'], prob: [Clock, 'blue'], janela: [Target, 'green'], score: [Check, 'purple'] };
+const ICONE = { ticket: [Zap, 'accent'], prob: [Clock, 'blue'], janela: [Target, 'green'], score: [Check, 'purple'] };
 
 export default function Deal({ d, ctx, curva, explicacao, asof, agenteInfo }) {
   const router = useRouter();
@@ -103,7 +103,7 @@ export default function Deal({ d, ctx, curva, explicacao, asof, agenteInfo }) {
               <div className="bar"><small>Guardado neste navegador · ⌘↵ envia</small><button className="btn sm white" onClick={salvar} disabled={!txt.trim()}><Send size={14} />Enviar</button></div>
             </div>
           </div>
-          <p className="hint">Agente, produto e setor não entram no score: no teste temporal nenhum previu fechamento (AUC ≈ 0,5). <a href="/metodo" style={{ color: 'var(--lime)' }}>Como funciona →</a></p>
+          <p className="hint">Agente, produto e setor não entram no score: no teste temporal nenhum previu fechamento (AUC ≈ 0,5). <a href="/metodo" style={{ color: 'var(--accent)' }}>Como funciona →</a></p>
         </aside>
       </div>
     </div>

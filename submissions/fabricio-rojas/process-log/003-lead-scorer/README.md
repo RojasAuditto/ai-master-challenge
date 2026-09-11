@@ -117,7 +117,17 @@ O pedido veio com uma referência de paleta de comandos e três verbos: escurece
 
 **O erro dessa rodada** foi de ferramenta, não de produto: tentei aplicar a CSS nova, um patch e o build num único comando e o shell recusou (`ENAMETOOLONG`). A página ficou um build inteiro com markup novo e estilo velho. Dividir em passos curtos e olhar a captura entre cada um resolveu; fica como lembrete de que "um comando só" não é atalho quando o comando tem 400 linhas.
 
-## 9. O que eu faria com mais tempo
+## 9. Quarta rodada: o acento sai de cena e a marca entra inteira
+
+Duas correções curtas, as duas sobre a mesma pergunta — o que merece ser a cor mais forte da tela.
+
+- **O lima saiu.** Servia para marcar o que importa, mas competia com o verde da fila "Fechar" e com o vermelho do "além do ciclo": três cores berrantes disputando a mesma atenção. Trocado por cinza claro (`#D4D4D4`) e um gradiente branco→cinza nas barras de score. Agora a única cor saturada numa linha da tabela é a da fila, que é justamente a informação. O gradiente roxo→azul do card de valor esperado ficou, porque é o único lugar onde ele aparece.
+- **O logo da G4, inteiro.** Antes o SVG oficial era recortado no ícone, pintado de preto e colado dentro de um quadrado lima — ou seja, a marca redesenhada. Agora é o arquivo oficial como veio, ícone dourado e wordmark branco, com um filete separando o nome do produto. Recolhida, a sidebar corta só o ícone; no cabeçalho mobile o logo aparece do mesmo jeito.
+- **A seta que não sumia.** Com a sidebar recolhida, a seta do item "Equipe" continuava visível: os ícones são SVG com `display:block` inline, e estilo inline vence regra de classe. Envolvi a seta num `span` com a classe e o `display:none` voltou a valer. O bug é pequeno e a lição não: quem escreve estilo inline no componente base tira do CSS o direito de decidir depois.
+
+**Verificação desta rodada.** Além das telas, rodei o caminho de reprodução do zero nos dois challenges — apaguei os `.db`, rodei `build-db.mjs` e a análise, e comparei o JSON gerado com o versionado: idênticos, fora o carimbo de data. É a garantia de que "dá pra rodar seguindo as instruções" não é promessa.
+
+## 10. O que eu faria com mais tempo
 
 - Gravar as notas e a decisão "confirmar vivo / encerrar" no CRM e recalcular — hoje ficam no navegador.
 - Bot de Slack com as prioridades da segunda-feira: uma chamada à API por vendedor.

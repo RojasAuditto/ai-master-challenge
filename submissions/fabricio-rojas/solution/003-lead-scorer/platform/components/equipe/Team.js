@@ -42,7 +42,7 @@ export default function Team({ agentes, janelas, base, inicial = {} }) {
       <section className="hl">
         {[
           { Ic: ArrowUR, lab: 'Maior valor esperado', a: top.ev, pill: top.ev && <span className="pill green"><i className="tri up" />{usdK(top.ev.ev)}</span>, stripe: true },
-          { Ic: TrendUp, lab: 'Mais deals para fechar', a: top.fechar, pill: top.fechar && <span className="pill lime">{top.fechar.por_acao.fechar} deals</span> },
+          { Ic: TrendUp, lab: 'Mais deals para fechar', a: top.fechar, pill: top.fechar && <span className="pill accent">{top.fechar.por_acao.fechar} deals</span> },
           { Ic: Alert, lab: 'Pipeline mais parado', a: top.sujo, pill: top.sujo && <span className="pill red"><i className="tri down" />{num((100 * top.sujo.por_acao.decidir) / top.sujo.abertos, 0)}%</span> },
         ].map((c, i) => (
           <Rise key={c.lab} atraso={i * 70}>

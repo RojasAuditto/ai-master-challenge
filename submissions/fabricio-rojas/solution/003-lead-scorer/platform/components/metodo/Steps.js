@@ -58,7 +58,7 @@ export default function Steps({ validacao: v, curva, cicloMax, janelas, base, ti
             <div className="grid g2" style={{ marginTop: 18 }}>
               {ORDEM.map((k) => (
                 <div key={k} className="card" style={{ background: 'var(--card-2)' }}>
-                  <div className="card-h"><span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 600 }}><i style={{ width: 8, height: 8, borderRadius: '50%', background: CORES_FILA[k], display: 'inline-block' }} />{janelas[k].rotulo}</span><span className="pill lime">× {num(janelas[k].mult, 1)}</span></div>
+                  <div className="card-h"><span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 600 }}><i style={{ width: 8, height: 8, borderRadius: '50%', background: CORES_FILA[k], display: 'inline-block' }} />{janelas[k].rotulo}</span><span className="pill accent">× {num(janelas[k].mult, 1)}</span></div>
                   <p className="hint" style={{ marginTop: 8 }}>{janelas[k].desc}.</p>
                 </div>
               ))}
@@ -85,7 +85,7 @@ export default function Steps({ validacao: v, curva, cicloMax, janelas, base, ti
             <div className="li"><span>Deals no treino</span><b>{int(v.treino)}</b></div>
             <div className="li"><span>Deals no teste</span><b>{int(v.teste)}</b></div>
             <div className="li"><span>Win rate base</span><b>{num(base * 100)}%</b></div>
-            <div className="li"><span>AUC · idade do deal</span><b><span className="pill lime">{num(idade.auc, 2)}</span></b></div>
+            <div className="li"><span>AUC · idade do deal</span><b><span className="pill accent">{num(idade.auc, 2)}</span></b></div>
             <div className="li"><span>AUC · melhor "quem"</span><b><span className="pill line">{num(melhorQuem.auc, 2)}</span></b></div>
             <div className="li"><span>Calibração (≤ 3 pp)</span><b>{cal ? <span className="pill green">ok</span> : <span className="pill amber">ver</span>}</b></div>
           </div>

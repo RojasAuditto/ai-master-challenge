@@ -62,7 +62,7 @@ export default function Sidebar({ gerentes = [], agentes = [] }) {
           <Link href="/" className="brand" title="Lead Scorer">
             {/* Logo oficial do G4 — o único elemento da marca. */}
             <span className="brand-logo"><img src="/g4-branca.svg" alt="G4 Educação" /></span>
-            <span className="brand-t"><b>Lead Scorer</b><small>Pipeline · RevOps</small></span>
+            <span className="brand-t">Lead Scorer</span>
           </Link>
           <button className="ibtn sb-so-desktop" onClick={toggleMin} aria-label={min ? 'Expandir menu' : 'Recolher menu'} title={min ? 'Expandir' : 'Recolher'}><Panel size={16} /></button>
           <button className="ibtn sb-so-mobile" onClick={() => setGaveta(false)} aria-label="Fechar menu"><X size={17} /></button>
@@ -75,7 +75,7 @@ export default function Sidebar({ gerentes = [], agentes = [] }) {
           <Item href="/?agente=&fila=todos" Ic={Layers} txt="Todos os deals" on={false} />
           <div className="sb-gap" />
           <button className="sb-item" aria-expanded={arvore} onClick={() => setArvore((a) => !a)} data-on={rota === '/equipe' && !gerenteAtivo} title="Equipe">
-            <span className="ic"><Users size={16} /></span><span className="txt">Equipe</span><ChevD size={14} className="sb-chev" />
+            <span className="ic"><Users size={16} /></span><span className="txt">Equipe</span><span className="sb-chev"><ChevD size={14} /></span>
           </button>
           <div className="sb-tree" data-open={arvore}><div>
             <Link href="/equipe" className="sb-sub" data-on={rota === '/equipe' && !gerenteAtivo}>Todos os gerentes</Link>
@@ -99,7 +99,7 @@ export default function Sidebar({ gerentes = [], agentes = [] }) {
             </div>
           )}
           <div className="sb-user">
-            <span className="avatar" style={{ background: 'var(--lime)', color: 'var(--bg)' }}>{iniciais('Fabrício Rojas')}</span>
+            <span className="avatar" style={{ background: 'var(--accent)', color: 'var(--bg)' }}>{iniciais('Fabrício Rojas')}</span>
             <div className="u"><b>Fabrício Rojas</b><span>Challenge 003 · G4</span></div>
             <button className="ibtn more" aria-label="Preferências" aria-expanded={prefs} onClick={() => setPrefs((p) => !p)}><MoreV size={16} /></button>
           </div>
